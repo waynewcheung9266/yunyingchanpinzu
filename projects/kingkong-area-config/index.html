@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>金刚区配置 - 智慧研学运营后台</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="logo">
+          <img src="https://saas2-admin-pc-test.yueyanglearning.com/resource/img/logo.png" alt="" />
+          <span>智慧研学运营后台</span>
+        </div>
+        <div class="menu-section">
+          <div class="menu-title"><span class="menu-icon">◉</span>勋章管理<span class="chevron">⌄</span></div>
+        </div>
+        <div class="menu-section open">
+          <div class="menu-title"><span class="menu-icon">♛</span>小程序管理<span class="chevron">⌃</span></div>
+          <div class="menu-link selected">金刚区配置</div>
+          <div class="menu-link">弹窗广告管理</div>
+          <div class="menu-link plain">Banner管理</div>
+          <div class="menu-link plain">菜单管理</div>
+          <div class="menu-link plain">活动首页配置</div>
+        </div>
+        <div class="menu-section">
+          <div class="menu-title block"><span class="menu-icon">▣</span>证书配置</div>
+        </div>
+        <div class="menu-section">
+          <div class="menu-title"><span class="menu-icon">◎</span>官网设置<span class="chevron">⌄</span></div>
+        </div>
+        <div class="sidebar-collapse">≪</div>
+      </aside>
+
+      <main class="main">
+        <header class="header">
+          <div class="collapse">☰</div>
+          <div class="category-tabs">
+            <span>数据统计</span>
+            <span>课程研学</span>
+            <span>订单财务</span>
+            <span class="active">内容运营</span>
+            <span>营销分销</span>
+            <span>合作签约</span>
+            <span>系统管理</span>
+            <span>运维服务</span>
+          </div>
+          <div class="tools">
+            <button class="export-btn">▱ 导出记录</button>
+            <span class="tool">⛶</span>
+            <span class="avatar">张</span>
+          </div>
+        </header>
+        <div class="breadcrumb"><span class="home">⌂</span><span>/</span><span>小程序管理</span><span>/</span><span>金刚区设置</span></div>
+
+        <section class="content">
+          <div class="info-wrap">
+            <div class="info-card">
+              <div class="bureau">
+                <span class="mr">教育局名称：张伟的教育局</span>
+                <span>教育局类型： 市级</span>
+              </div>
+              <div class="setting">
+                <div class="setting-item">
+                  <div class="item-title">
+                    是否开启活动页金刚区配置：
+                    <label class="switch">
+                      <input id="pageSwitch" type="checkbox" checked />
+                      <span></span>
+                    </label>
+                  </div>
+                  <div class="tip"><span class="tip-icon">!</span> 开启后将可以配置小程序活动菜单页面的金刚区，关闭后将恢复为系统默认的展示方式</div>
+                </div>
+                <div class="setting-item">
+                  <div class="item-title">
+                    下级教育局是否继承：
+                    <label class="radio"><input type="radio" name="inherit" /> 否</label>
+                    <label class="radio"><input type="radio" name="inherit" checked /> 是</label>
+                  </div>
+                  <div class="tip"><span class="tip-icon">!</span> 默认为否，选择是则该下级所有教育局将按照本设置进行配置</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <section id="tablePanel" class="panel">
+            <div class="search-form">
+              <label>
+                <span>状态</span>
+                <select id="statusFilter">
+                  <option value="">请选择</option>
+                  <option value="1">开启</option>
+                  <option value="0">关闭</option>
+                </select>
+              </label>
+              <label class="name-field">
+                <span>金刚区名称</span>
+                <input id="nameFilter" placeholder="请输入金刚区名称进行搜索" />
+              </label>
+              <button id="searchBtn" class="btn primary">查询</button>
+              <button id="resetBtn" class="btn">重置</button>
+            </div>
+            <div class="table-toolbar">
+              <button id="addBtn" class="btn primary">添加金刚区</button>
+            </div>
+            <div class="table-card">
+              <table>
+                <thead>
+                  <tr>
+                    <th>icon图</th>
+                    <th>金刚区名称</th>
+                    <th>排序 <span class="black-tip" title="值越小越靠前">!</span></th>
+                    <th>配置研学活动数</th>
+                    <th>状态</th>
+                    <th>最后一次操作时间</th>
+                    <th class="fixed wide">操作</th>
+                  </tr>
+                </thead>
+                <tbody id="zoneRows"></tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <div id="zoneModal" class="modal-mask hidden">
+      <div class="modal zone-modal">
+        <div class="modal-head">
+          <span id="zoneModalTitle">添加金刚区</span>
+          <button class="close" data-close="zoneModal">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-row"><label>金刚区名称</label><input id="zoneName" maxlength="6" /></div>
+          <div class="form-row">
+            <label>icon图</label>
+            <div class="upload"><span>+</span><em>建议尺寸80*80px，2M以下</em></div>
+          </div>
+          <div class="form-row"><label>排序</label><input id="zoneSort" type="number" /></div>
+        </div>
+        <div class="modal-foot">
+          <button class="btn" data-close="zoneModal">取消</button>
+          <button id="saveZone" class="btn primary">确定</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="activityModal" class="modal-mask hidden">
+      <div class="modal activity-modal">
+        <div class="modal-head">
+          <span>配置活动</span>
+          <button class="close" data-close="activityModal">×</button>
+        </div>
+        <div class="activity-body">
+          <div class="activity-side">
+            <div class="search-form compact">
+              <label><span>活动名称</span><input placeholder="请输入活动名称进行搜索" /></label>
+              <label><span>类型</span><select><option>全部</option><option>托管活动</option><option>研学线路</option><option>研学活动</option></select></label>
+            </div>
+            <table>
+              <thead><tr><th>活动名称</th><th>价格(元)</th><th>类型</th><th>操作</th></tr></thead>
+              <tbody id="activityRows"></tbody>
+            </table>
+          </div>
+          <div class="activity-side selected-activity-side">
+            <div class="activity-config-head">
+              <div id="activityMenuTabs" class="activity-menu-tabs"></div>
+              <div id="activityMenuHint" class="activity-menu-hint"></div>
+            </div>
+            <div class="search-form compact selected-activity-search">
+              <label><span>活动名称</span><input id="selectedActivityNameFilter" placeholder="请输入活动名称进行搜索" /></label>
+              <label>
+                <span>类型</span>
+                <select id="selectedActivityTypeFilter">
+                  <option value="">全部</option>
+                  <option value="7">托管活动</option>
+                  <option value="6">研学线路</option>
+                  <option value="2">研学活动</option>
+                </select>
+              </label>
+              <button id="selectedActivityResetBtn" class="btn">重置</button>
+              <button id="selectedActivitySearchBtn" class="btn primary">查询</button>
+            </div>
+            <table>
+              <thead><tr><th>活动名称</th><th>菜单名称</th><th>价格(元)</th><th>类型</th><th>排序</th><th>操作</th></tr></thead>
+              <tbody id="selectedRows"></tbody>
+            </table>
+            <div id="selectedActivityEmpty" class="selected-activity-empty hidden"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="submenuModal" class="modal-mask hidden">
+      <div class="modal submenu-modal">
+        <div class="modal-head">
+          <span id="submenuModalTitle">配置二级菜单</span>
+          <button class="close" data-close="submenuModal">×</button>
+        </div>
+        <div class="submenu-body">
+          <div class="submenu-list-panel">
+            <div class="submenu-enable-row">
+              <div>
+                <strong>是否开启二级菜单：</strong>
+                <label class="switch">
+                  <input id="submenuEnableSwitch" type="checkbox" />
+                  <span></span>
+                </label>
+              </div>
+              <p>开启后第一项固定为“全部”，排序为 1，不可删除</p>
+            </div>
+            <div class="submenu-panel-head">
+              <div></div>
+              <button id="addSubmenuBtn" class="btn primary">新增菜单</button>
+            </div>
+            <table class="submenu-table">
+              <thead>
+                <tr>
+                  <th>菜单名称</th>
+                  <th>配置活动数量</th>
+                  <th>排序</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="submenuRows"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="modal-foot">
+          <button class="btn" data-close="submenuModal">取消</button>
+          <button class="btn primary" data-close="submenuModal">确定</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
