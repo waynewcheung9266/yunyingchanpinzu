@@ -231,7 +231,9 @@ function renderActivityTabs() {
     ...menus.map((menu) => `<button class="activity-menu-tab ${activeActivityMenuId === menu.id ? "active" : ""}" data-activity-menu="${menu.id}">${menu.name}</button>`)
   ];
   document.querySelector("#activityMenuTabs").innerHTML = tabs.join("");
-  document.querySelector("#activityMenuHint").textContent = "";
+  document.querySelector("#activityMenuHint").textContent = activeActivityMenuId === "all" && menus.length
+    ? getActivityMenuHint(menus)
+    : "";
   document.querySelectorAll("[data-activity-menu]").forEach((btn) => btn.addEventListener("click", () => {
     activeActivityMenuId = btn.dataset.activityMenu === "all" ? "all" : Number(btn.dataset.activityMenu);
     resetSelectedActivityFilters(false);
@@ -286,7 +288,7 @@ function renderActivityTables() {
     return `<tr><td>${activity.name}</td><td>${menuCell}</td><td>${activity.price}</td><td>${activity.type_name}</td><td>${sortCell}</td><td>${removeCell}</td></tr>`;
   }).join("");
   const emptyHint = document.querySelector("#selectedActivityEmpty");
-  const emptyHintText = hasSubmenuEnabled ? getActivityMenuHint(configurable) : "";
+  const emptyHintText = hasSubmenuEnabled && activeActivityMenuId === "all" ? getActivityMenuHint(configurable) : "";
   emptyHint.textContent = selectedFiltered.length ? "" : emptyHintText;
   emptyHint.classList.toggle("hidden", Boolean(selectedFiltered.length || !emptyHintText));
 
