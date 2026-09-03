@@ -313,9 +313,9 @@ function renderActivityTables() {
 function renderSortStepper(activityId, value) {
   return `
     <div class="sort-stepper">
-      <button type="button" data-sort-step="-1" data-sort-activity="${activityId}">-</button>
+      <button class="sort-arrow down" type="button" data-sort-step="-1" data-sort-activity="${activityId}" title="减少排序"></button>
       <input class="sort-input" data-activity-sort="${activityId}" value="${value}">
-      <button type="button" data-sort-step="1" data-sort-activity="${activityId}">+</button>
+      <button class="sort-arrow up" type="button" data-sort-step="1" data-sort-activity="${activityId}" title="增加排序"></button>
     </div>
   `;
 }

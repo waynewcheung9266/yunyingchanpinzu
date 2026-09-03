@@ -111,10 +111,16 @@ td { padding: 12px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; co
 .selected-activity-search .btn { min-width: 64px; }
 .activity-config-tip { display: flex; align-items: center; gap: 10px; min-height: 42px; margin: 12px; padding: 8px 14px; border: 1px solid #ffe2bd; border-radius: 6px; color: #ff7a00; background: #fff7e8; font-size: 13px; line-height: 20px; }
 .activity-config-tip span { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; color: #fff; background: #ff7a00; font-size: 12px; font-weight: 600; flex: 0 0 auto; }
-.sort-stepper { display: inline-flex; align-items: center; height: 28px; border: 1px solid #d8e0f0; border-radius: 4px; overflow: hidden; background: #fff; }
-.sort-stepper button { width: 26px; height: 26px; border: 0; background: #f7f8fa; color: #4e5969; cursor: pointer; line-height: 1; }
-.sort-stepper button:hover { color: #3152d6; background: #f2f6ff; }
-.sort-input { width: 44px; min-width: 44px; height: 26px; padding: 0 4px; border: 0; border-left: 1px solid #d8e0f0; border-right: 1px solid #d8e0f0; border-radius: 0; text-align: center; }
+.sort-stepper { position: relative; display: inline-flex; align-items: center; width: 72px; height: 28px; border: 1px solid #d8e0f0; border-radius: 4px; overflow: hidden; background: #fff; }
+.sort-input { width: 52px; min-width: 52px; height: 26px; padding: 0 4px; border: 0; border-radius: 0; text-align: center; }
+.sort-arrow { position: absolute; right: 0; width: 20px; height: 14px; border: 0; border-left: 1px solid #d8e0f0; background: #f7f8fa; cursor: pointer; }
+.sort-arrow.up { top: 0; border-bottom: 1px solid #d8e0f0; }
+.sort-arrow.down { bottom: 0; }
+.sort-arrow:before { content: ""; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; }
+.sort-arrow.up:before { border-bottom: 5px solid #86909c; }
+.sort-arrow.down:before { border-top: 5px solid #86909c; }
+.sort-arrow:hover { background: #f2f6ff; }
+.sort-arrow:hover:before { border-top-color: #3152d6; border-bottom-color: #3152d6; }
 .move-select { min-width: 86px; width: 86px; height: 28px; margin-right: 8px; padding: 0 8px; color: #164bff; border-color: #d8e0f0; background: #fff; }
 .move-select:disabled { color: #c9cdd4; background: #f2f3f5; border-color: #e5e6eb; cursor: not-allowed; }
 .unassigned-tag { display: inline-flex; align-items: center; height: 24px; padding: 0 8px; border-radius: 4px; color: #e6a23c; background: #fdf6ec; border: 1px solid #faecd8; font-size: 12px; }
