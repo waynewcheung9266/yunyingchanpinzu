@@ -207,6 +207,10 @@ function getAllSelections() {
   return [...legacy, ...assigned];
 }
 
+function getActivityAssignedMenuId(activityId) {
+  return getConfigurableMenus(activeActivityZoneId).find((menu) => getMenuSelections(menu.id).some((item) => item.activity_id === activityId))?.id || null;
+}
+
 function getZoneActivityCount(zoneId) {
   if (!submenuEnabled[zoneId]) return getLegacySelections(zoneId).length;
   const menus = submenuStore[zoneId] ? submenuStore[zoneId].filter((item) => !item.locked) : [];
@@ -256,14 +260,20 @@ function renderActivityTables() {
     : new Set(getMenuSelections().map((item) => item.activity_id));
   const canSelect = !hasSubmenuEnabled || (configurable.length > 0 && activeActivityMenuId !== "all");
 
-  document.querySelector("#activityRows").innerHTML = activities.map((item) => `
-    <tr>
-      <td>${item.name}</td>
-      <td>${item.price}</td>
-      <td>${item.type_name}</td>
-      <td><button class="action ${!canSelect ? "disabled" : ""}" data-pick-activity="${item.activity_id}" ${!canSelect ? "disabled" : ""}>${selectedIds.has(item.activity_id) ? "取消选择" : "选择"}</button></td>
-    </tr>
-  `).join("");
+  document.querySelector("#activityRows").innerHTML = activities.map((item) => {
+    const assignedMenuId = hasSubmenuEnabled ? getActivityAssignedMenuId(item.activity_id) : null;
+    const isAssignedToOtherMenu = Boolean(assignedMenuId && assignedMenuId !== activeActivityMenuId);
+    const disabled = !canSelect || isAssignedToOtherMenu;
+    const actionText = selectedIds.has(item.activity_id) ? "取消选择" : "选择";
+    return `
+      <tr>
+        <td>${item.name}</td>
+        <td>${item.price}</td>
+        <td>${item.type_name}</td>
+        <td><button class="action ${disabled ? "disabled" : ""}" data-pick-activity="${item.activity_id}" ${disabled ? "disabled" : ""}>${actionText}</button></td>
+      </tr>
+    `;
+  }).join("");
 
   const selected = hasSubmenuEnabled
     ? (activeActivityMenuId === "all" ? getAllSelections() : getMenuSelections().map((item) => ({ ...item, menuName: getActiveMenuName() })))
@@ -352,6 +362,8 @@ function toggleActivitySelection(activityId) {
     return;
   }
   if (activeActivityMenuId === "all") return;
+  const assignedMenuId = getActivityAssignedMenuId(activityId);
+  if (assignedMenuId && assignedMenuId !== activeActivityMenuId) return;
   const selections = getMenuSelections();
   const existingIndex = selections.findIndex((item) => item.activity_id === activityId);
   if (existingIndex >= 0) selections.splice(existingIndex, 1);
