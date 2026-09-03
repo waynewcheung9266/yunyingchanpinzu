@@ -231,9 +231,7 @@ function renderActivityTabs() {
     ...menus.map((menu) => `<button class="activity-menu-tab ${activeActivityMenuId === menu.id ? "active" : ""}" data-activity-menu="${menu.id}">${menu.name}</button>`)
   ];
   document.querySelector("#activityMenuTabs").innerHTML = tabs.join("");
-  document.querySelector("#activityMenuHint").textContent = activeActivityMenuId === "all" && menus.length
-    ? getActivityMenuHint(menus)
-    : "";
+  document.querySelector("#activityMenuHint").textContent = "";
   document.querySelectorAll("[data-activity-menu]").forEach((btn) => btn.addEventListener("click", () => {
     activeActivityMenuId = btn.dataset.activityMenu === "all" ? "all" : Number(btn.dataset.activityMenu);
     resetSelectedActivityFilters(false);
