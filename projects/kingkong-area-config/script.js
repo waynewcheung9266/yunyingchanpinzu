@@ -284,7 +284,7 @@ function renderActivityTables() {
     const menuCell = getActivityMenuCell(selection, hasSubmenuEnabled);
     const removeCell = getActivityActionCell(activity, selection, isSummaryTab, configurable);
     if (isSummaryTab) return `<tr><td>${activity.name}</td><td>${menuCell}</td><td>${activity.price}</td><td>${activity.type_name}</td><td>${removeCell}</td></tr>`;
-    const sortCell = `<input class="sort-input" data-activity-sort="${activity.activity_id}" value="${selection.sort || index + 1}">`;
+    const sortCell = renderSortStepper(activity.activity_id, selection.sort || index + 1);
     return `<tr><td>${activity.name}</td><td>${menuCell}</td><td>${activity.price}</td><td>${activity.type_name}</td><td>${sortCell}</td><td>${removeCell}</td></tr>`;
   }).join("");
   const emptyHint = document.querySelector("#selectedActivityEmpty");
@@ -296,6 +296,17 @@ function renderActivityTables() {
   document.querySelectorAll("[data-delete-activity]").forEach((btn) => btn.addEventListener("click", () => deleteActivitySelection(Number(btn.dataset.deleteActivity), btn.dataset.sourceMenu)));
   document.querySelectorAll("[data-move-activity]").forEach((select) => select.addEventListener("change", () => moveActivityToMenu(Number(select.dataset.moveActivity), Number(select.value), select.dataset.sourceMenu)));
   document.querySelectorAll("[data-activity-sort]").forEach((input) => input.addEventListener("change", () => updateActivitySort(input)));
+  document.querySelectorAll("[data-sort-step]").forEach((btn) => btn.addEventListener("click", () => stepActivitySort(btn)));
+}
+
+function renderSortStepper(activityId, value) {
+  return `
+    <div class="sort-stepper">
+      <button type="button" data-sort-step="-1" data-sort-activity="${activityId}">-</button>
+      <input class="sort-input" data-activity-sort="${activityId}" value="${value}">
+      <button type="button" data-sort-step="1" data-sort-activity="${activityId}">+</button>
+    </div>
+  `;
 }
 
 function renderSelectedActivityHead(isSummaryTab) {
@@ -389,6 +400,14 @@ function updateActivitySort(input) {
   if (!submenuEnabled[activeActivityZoneId]) return;
   const item = getMenuSelections().find((selection) => selection.activity_id === Number(input.dataset.activitySort));
   if (item) item.sort = Math.max(1, Number(input.value || 1));
+  renderActivityTables();
+}
+
+function stepActivitySort(btn) {
+  if (!submenuEnabled[activeActivityZoneId] || activeActivityMenuId === "all") return;
+  const item = getMenuSelections().find((selection) => selection.activity_id === Number(btn.dataset.sortActivity));
+  if (!item) return;
+  item.sort = Math.max(1, Number(item.sort || 1) + Number(btn.dataset.sortStep));
   renderActivityTables();
 }
 

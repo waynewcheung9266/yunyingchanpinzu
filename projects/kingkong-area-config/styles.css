@@ -109,7 +109,10 @@ td { padding: 12px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; co
 .selected-activity-search { gap: 10px; flex-wrap: nowrap; }
 .selected-activity-search input { width: 190px; }
 .selected-activity-search .btn { min-width: 64px; }
-.sort-input { width: 72px; min-width: 72px; }
+.sort-stepper { display: inline-flex; align-items: center; height: 28px; border: 1px solid #d8e0f0; border-radius: 4px; overflow: hidden; background: #fff; }
+.sort-stepper button { width: 26px; height: 26px; border: 0; background: #f7f8fa; color: #4e5969; cursor: pointer; line-height: 1; }
+.sort-stepper button:hover { color: #3152d6; background: #f2f6ff; }
+.sort-input { width: 44px; min-width: 44px; height: 26px; padding: 0 4px; border: 0; border-left: 1px solid #d8e0f0; border-right: 1px solid #d8e0f0; border-radius: 0; text-align: center; }
 .move-select { min-width: 86px; width: 86px; height: 28px; margin-right: 8px; padding: 0 8px; color: #164bff; border-color: #d8e0f0; background: #fff; }
 .move-select:disabled { color: #c9cdd4; background: #f2f3f5; border-color: #e5e6eb; cursor: not-allowed; }
 .unassigned-tag { display: inline-flex; align-items: center; height: 24px; padding: 0 8px; border-radius: 4px; color: #e6a23c; background: #fdf6ec; border: 1px solid #faecd8; font-size: 12px; }
