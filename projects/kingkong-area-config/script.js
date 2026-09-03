@@ -248,6 +248,7 @@ function getActivityMenuHint(menus) {
 function renderActivityTables() {
   const configurable = getConfigurableMenus(activeActivityZoneId);
   const hasSubmenuEnabled = Boolean(submenuEnabled[activeActivityZoneId]);
+  document.querySelector("#selectedActivityConfigTip").classList.toggle("hidden", hasSubmenuEnabled);
   const selectedIds = !hasSubmenuEnabled
     ? new Set(getLegacySelections().map((item) => item.activity_id))
     : activeActivityMenuId === "all"
