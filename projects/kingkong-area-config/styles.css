@@ -127,10 +127,11 @@ td { padding: 12px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; co
 #selectedRows td:last-child { white-space: nowrap; }
 .submenu-body { padding: 16px; background: #fff; }
 .submenu-list-panel { border: 1px solid #f0f0f0; background: #fff; }
-.submenu-enable-row { min-height: 66px; padding: 14px; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.submenu-enable-row > div { display: flex; align-items: center; gap: 8px; }
+.submenu-enable-row { min-height: 66px; padding: 14px; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; gap: 16px; }
+.submenu-enable-content { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.submenu-enable-main { display: flex; align-items: center; gap: 8px; }
 .submenu-enable-row strong { font-size: 15px; }
-.submenu-enable-row p { margin: 0; color: #86909c; font-size: 13px; }
+.submenu-enable-row p { margin: 0; padding-left: 0; color: #86909c; font-size: 13px; }
 .submenu-panel-head { height: 64px; padding: 0 14px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #f0f0f0; }
 .submenu-panel-head strong { display: block; font-size: 15px; color: #1d2129; margin-bottom: 4px; }
 .submenu-panel-head p { margin: 0; color: #86909c; font-size: 12px; }
