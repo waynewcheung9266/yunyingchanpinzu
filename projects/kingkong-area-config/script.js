@@ -263,8 +263,8 @@ function renderActivityTables() {
   document.querySelector("#activityRows").innerHTML = activities.map((item) => {
     const assignedMenuId = hasSubmenuEnabled ? getActivityAssignedMenuId(item.activity_id) : null;
     const isAssignedToOtherMenu = Boolean(assignedMenuId && assignedMenuId !== activeActivityMenuId);
-    const disabled = !canSelect || isAssignedToOtherMenu;
     const actionText = selectedIds.has(item.activity_id) ? "取消选择" : "选择";
+    const disabled = actionText === "取消选择" ? false : (!canSelect || isAssignedToOtherMenu);
     return `
       <tr>
         <td>${item.name}</td>
@@ -361,7 +361,15 @@ function toggleActivitySelection(activityId) {
     renderZones();
     return;
   }
-  if (activeActivityMenuId === "all") return;
+  if (activeActivityMenuId === "all") {
+    const legacyIndex = getLegacySelections().findIndex((item) => item.activity_id === activityId);
+    if (legacyIndex >= 0) {
+      zoneActivityStore[activeActivityZoneId].splice(legacyIndex, 1);
+      renderActivityTables();
+      renderZones();
+    }
+    return;
+  }
   const assignedMenuId = getActivityAssignedMenuId(activityId);
   if (assignedMenuId && assignedMenuId !== activeActivityMenuId) return;
   const selections = getMenuSelections();
