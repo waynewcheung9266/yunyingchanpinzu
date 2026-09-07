@@ -263,7 +263,7 @@ function renderActivityTables() {
   document.querySelector("#activityRows").innerHTML = activities.map((item) => {
     const assignedMenuId = hasSubmenuEnabled ? getActivityAssignedMenuId(item.activity_id) : null;
     const isLegacySelected = getLegacySelections().some((selection) => selection.activity_id === item.activity_id);
-    const isCurrentMenuSelected = selectedIds.has(item.activity_id) && assignedMenuId === activeActivityMenuId;
+    const isCurrentMenuSelected = hasSubmenuEnabled && activeActivityMenuId !== "all" && selectedIds.has(item.activity_id);
     const isAssignedToOtherMenu = Boolean(assignedMenuId && assignedMenuId !== activeActivityMenuId);
     const actionText = (!hasSubmenuEnabled && selectedIds.has(item.activity_id)) || (activeActivityMenuId === "all" && isLegacySelected) || isCurrentMenuSelected ? "取消选择" : "选择";
     const disabled = actionText === "取消选择" ? false : (!canSelect || isAssignedToOtherMenu);
