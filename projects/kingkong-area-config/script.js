@@ -265,7 +265,8 @@ function renderActivityTables() {
     const isLegacySelected = getLegacySelections().some((selection) => selection.activity_id === item.activity_id);
     const isCurrentMenuSelected = hasSubmenuEnabled && activeActivityMenuId !== "all" && selectedIds.has(item.activity_id);
     const isAssignedToOtherMenu = Boolean(assignedMenuId && assignedMenuId !== activeActivityMenuId);
-    const actionText = (!hasSubmenuEnabled && selectedIds.has(item.activity_id)) || (activeActivityMenuId === "all" && isLegacySelected) || isCurrentMenuSelected ? "取消选择" : "选择";
+    const isSummarySelected = hasSubmenuEnabled && activeActivityMenuId === "all" && selectedIds.has(item.activity_id);
+    const actionText = (!hasSubmenuEnabled && selectedIds.has(item.activity_id)) || isSummarySelected || isCurrentMenuSelected ? "取消选择" : "选择";
     const disabled = actionText === "取消选择" ? false : (!canSelect || isAssignedToOtherMenu);
     return `
       <tr>
@@ -367,6 +368,13 @@ function toggleActivitySelection(activityId) {
     const legacyIndex = getLegacySelections().findIndex((item) => item.activity_id === activityId);
     if (legacyIndex >= 0) {
       zoneActivityStore[activeActivityZoneId].splice(legacyIndex, 1);
+      renderActivityTables();
+      renderZones();
+      return;
+    }
+    const assignedMenuId = getActivityAssignedMenuId(activityId);
+    if (assignedMenuId) {
+      submenuActivityStore[activeActivityZoneId][assignedMenuId] = getMenuSelections(assignedMenuId).filter((item) => item.activity_id !== activityId);
       renderActivityTables();
       renderZones();
     }
