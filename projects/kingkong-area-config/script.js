@@ -292,13 +292,14 @@ function renderActivityTables() {
   });
 
   const isSummaryTab = hasSubmenuEnabled && activeActivityMenuId === "all";
-  renderSelectedActivityHead(isSummaryTab);
+  renderSelectedActivityHead(isSummaryTab, hasSubmenuEnabled);
   document.querySelector("#selectedRows").innerHTML = selectedFiltered.map((selection, index) => {
     const activity = activities.find((item) => item.activity_id === selection.activity_id);
     const menuCell = getActivityMenuCell(selection, hasSubmenuEnabled);
     const removeCell = getActivityActionCell(activity, selection, isSummaryTab, configurable);
     if (isSummaryTab) return `<tr><td>${activity.name}</td><td>${menuCell}</td><td>${activity.price}</td><td>${activity.type_name}</td><td>${removeCell}</td></tr>`;
     const sortCell = renderSortStepper(activity.activity_id, selection.sort || index + 1);
+    if (!hasSubmenuEnabled) return `<tr><td>${activity.name}</td><td>${activity.price}</td><td>${activity.type_name}</td><td>${sortCell}</td><td>${removeCell}</td></tr>`;
     return `<tr><td>${activity.name}</td><td>${menuCell}</td><td>${activity.price}</td><td>${activity.type_name}</td><td>${sortCell}</td><td>${removeCell}</td></tr>`;
   }).join("");
   const emptyHint = document.querySelector("#selectedActivityEmpty");
@@ -323,8 +324,12 @@ function renderSortStepper(activityId, value) {
   `;
 }
 
-function renderSelectedActivityHead(isSummaryTab) {
+function renderSelectedActivityHead(isSummaryTab, hasSubmenuEnabled) {
   const head = document.querySelector("#selectedRows").closest("table").querySelector("thead");
+  if (!hasSubmenuEnabled) {
+    head.innerHTML = "<tr><th>活动名称</th><th>价格(元)</th><th>类型</th><th>排序</th><th>操作</th></tr>";
+    return;
+  }
   head.innerHTML = isSummaryTab
     ? "<tr><th>活动名称</th><th>菜单名称</th><th>价格(元)</th><th>类型</th><th>操作</th></tr>"
     : "<tr><th>活动名称</th><th>菜单名称</th><th>价格(元)</th><th>类型</th><th>排序</th><th>操作</th></tr>";
