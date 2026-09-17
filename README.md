@@ -5,6 +5,7 @@
 当前项目：
 
 - `projects/kingkong-area-config/`：运营后台小程序管理金刚区配置
+- `projects/chuangjian-laodongke-delete/`：学校端天津津南区穿件劳动课新增删除功能
 
 本地预览方式：
 
@@ -16,4 +17,5 @@ python3 -m http.server 4175
 
 ```text
 http://127.0.0.1:4175/projects/kingkong-area-config/
+http://127.0.0.1:4175/projects/chuangjian-laodongke-delete/
 ```

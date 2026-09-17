@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>家庭劳动 - 张伟的学校</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true"></div>
+          <strong>张伟的学校</strong>
+        </div>
+        <div class="school-switch">学校 <span class="arrow-down"></span></div>
+        <nav class="topnav" aria-label="主导航">
+          <a href="#">研学</a>
+          <a href="#">课后服务</a>
+          <a class="active" href="#">劳动课</a>
+        </nav>
+        <button class="fullscreen" aria-label="全屏">
+          <span></span>
+        </button>
+        <div class="avatar">张</div>
+      </header>
+
+      <div class="shell">
+        <aside class="sidebar">
+          <nav class="side-menu" aria-label="侧边菜单">
+            <a class="menu-item" href="#"><span class="icon monitor"></span><span>数据大屏</span></a>
+            <a class="menu-item" href="#"><span class="icon home"></span><span>数据看板</span></a>
+            <a class="menu-item has-more" href="#"><span class="icon image"></span><span>劳动周</span><b>⌄</b></a>
+            <a class="menu-item has-more" href="#"><span class="icon book"></span><span>精品研学课程库</span><b>⌄</b></a>
+            <a class="menu-item has-more" href="#"><span class="icon flag"></span><span>活动管理</span><b>⌄</b></a>
+            <a class="menu-item blue has-more" href="#"><span class="icon grid"></span><span>教学管理</span><b>⌄</b></a>
+            <a class="menu-item blue has-more open" href="#"><span class="icon calendar"></span><span>教务管理</span><b>⌃</b></a>
+            <a class="menu-item sub" href="#"><span class="icon transfer"></span><span>转校管理</span></a>
+            <a class="menu-item sub" href="#"><span class="icon card"></span><span>班级管理</span></a>
+            <a class="menu-item sub" href="#"><span class="icon user"></span><span>学生管理</span></a>
+            <a class="menu-item sub" href="#"><span class="icon teacher"></span><span>教师管理</span></a>
+            <a class="menu-item sub" href="#"><span class="icon crown"></span><span>教师推荐</span></a>
+            <a class="menu-item sub" href="#"><span class="icon play"></span><span>开课设置</span></a>
+            <a class="menu-item sub active" id="homeLaborMenu" href="#"><span class="icon doc"></span><span>家庭劳动</span></a>
+            <a class="menu-item sub" href="#"><span class="icon nodes"></span><span>评价模型</span></a>
+            <a class="menu-item has-more" href="#"><span class="icon gallery"></span><span>作品管理</span><b>⌄</b></a>
+            <a class="menu-item has-more" href="#"><span class="icon apple"></span><span>报表管理</span><b>⌄</b></a>
+            <a class="menu-item has-more" href="#"><span class="icon check"></span><span>考察管理</span><b>⌄</b></a>
+          </nav>
+          <button class="sidebar-collapse" aria-label="收起侧边栏">≪</button>
+        </aside>
+
+        <main class="main">
+          <div class="breadcrumb" id="breadcrumb">
+            <span class="crumb-home"></span>
+            <span>/</span>
+            <span>教务管理</span>
+            <span>/</span>
+            <button class="crumb-link" id="backToList">家庭劳动</button>
+            <span class="detail-crumb hidden">/</span>
+            <strong class="detail-crumb hidden">家庭劳动详情</strong>
+          </div>
+
+          <section class="content list-view" id="listView">
+            <div class="content-head">
+              <h1 id="courseTotal">共计 2 门</h1>
+              <button class="create-btn">创建家庭劳动</button>
+            </div>
+
+            <div class="course-grid">
+              <article class="course-card deletable" id="schoolCourseCard">
+                <div class="course-icon"><span></span></div>
+                <div class="course-copy">
+                  <h2>张伟的家庭劳动课</h2>
+                  <p>共计 2 项任务</p>
+                </div>
+                <div class="course-actions">
+                  <button class="view-course" id="viewFirstCourse">查看</button>
+                  <button class="course-delete" id="deleteSchoolCourse" aria-label="删除张伟的家庭劳动课">
+                    <svg class="trash-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M10 11v6" />
+                      <path d="M14 11v6" />
+                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+                      <path d="M3 6h18" />
+                      <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                    </svg>
+                  </button>
+                </div>
+              </article>
+
+              <article class="course-card">
+                <div class="course-icon"><span></span></div>
+                <div class="course-copy">
+                  <h2>张伟的家庭劳动课运营平台创建</h2>
+                  <p>共计 2 项任务</p>
+                </div>
+                <div class="course-actions">
+                  <button class="view-course">查看</button>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="content detail-view hidden" id="detailView">
+            <div class="detail-panel">
+              <div class="detail-inner">
+                <div class="detail-head">
+                  <h1>张伟的家庭劳动课</h1>
+                  <div class="detail-actions view-actions">
+                    <button class="edit-btn" id="editChecklist">编辑清单</button>
+                  </div>
+                  <div class="detail-actions manage-actions hidden">
+                    <button class="primary-action">添加</button>
+                    <button class="primary-action" id="saveChecklist">保存</button>
+                  </div>
+                </div>
+
+                <div class="task-card" id="taskCard">
+                  <article class="task-row">
+                    <div class="task-visual clean" aria-hidden="true">
+                      <span class="broom-handle"></span>
+                      <span class="broom-head"></span>
+                      <span class="spark s1"></span>
+                      <span class="spark s2"></span>
+                      <span class="spark s3"></span>
+                    </div>
+                    <div class="task-copy">
+                      <h2>清洁与卫生</h2>
+                      <p>任务名称： 张伟的家庭劳动课任务1</p>
+                    </div>
+                    <div class="target-badge blue">目标<br />次数</div>
+                    <div class="target-count"><strong>1</strong><span>次</span></div>
+                    <div class="row-actions">
+                      <button class="row-edit">编辑</button>
+                      <button class="row-delete">删除</button>
+                    </div>
+                  </article>
+
+                  <article class="task-row">
+                    <div class="task-visual storage" aria-hidden="true">
+                      <span></span>
+                    </div>
+                    <div class="task-copy">
+                      <h2>整理与收纳</h2>
+                      <p>任务名称： 张伟的家庭劳动课任务2</p>
+                    </div>
+                    <div class="target-badge red">目标<br />次数</div>
+                    <div class="target-count"><strong>1</strong><span>次</span></div>
+                    <div class="row-actions">
+                      <button class="row-edit">编辑</button>
+                      <button class="row-delete">删除</button>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+
+      <div class="float-tab parent-code">家<br />长<br />小<br />程<br />序<br />码<br />≪</div>
+      <div class="float-tab teacher-code">教<br />师<br />小<br />程<br />序<br />码<br />≪</div>
+
+      <div class="modal-mask hidden" id="deleteModal" role="dialog" aria-modal="true" aria-labelledby="deleteTitle">
+        <div class="confirm-modal">
+          <div class="confirm-icon">!</div>
+          <div class="confirm-content">
+            <h2 id="deleteTitle">确认删除？</h2>
+            <p>删除后 2 项家庭劳动任务将一起删除。</p>
+          </div>
+          <div class="confirm-actions">
+            <button class="cancel-btn" id="cancelDelete">取消</button>
+            <button class="danger-btn" id="confirmDelete">确认删除</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
