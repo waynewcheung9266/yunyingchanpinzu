@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>校自查考核 - 表单附件上传</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true"></div>
+          <strong>张伟的学校</strong>
+        </div>
+        <div class="school-switch">学校 <span class="arrow-down"></span></div>
+        <nav class="topnav" aria-label="主导航">
+          <a href="#">研学</a>
+          <a href="#">课后服务</a>
+          <a class="active" href="#">劳动课</a>
+        </nav>
+        <button class="fullscreen" aria-label="全屏">
+          <span></span>
+        </button>
+        <div class="avatar">张</div>
+      </header>
+
+      <div class="shell">
+        <aside class="sidebar">
+          <nav class="side-menu" aria-label="侧边菜单">
+            <a class="menu-item" href="#"><span class="icon monitor"></span><span>数据大屏</span></a>
+            <a class="menu-item" href="#"><span class="icon home"></span><span>数据看板</span></a>
+            <a class="menu-item has-more" href="#"><span class="icon image"></span><span>劳动周</span><b>⌄</b></a>
+            <a class="menu-item has-more" href="#"><span class="icon book"></span><span>精品研学课程库</span><b>⌄</b></a>
+            <a class="menu-item has-more" href="#"><span class="icon flag"></span><span>活动管理</span><b>⌄</b></a>
+            <a class="menu-item has-more" href="#"><span class="icon grid"></span><span>教学管理</span><b>⌄</b></a>
+            <a class="menu-item has-more" id="academicMenu" href="#"><span class="icon calendar"></span><span>教务管理</span><b>⌄</b></a>
+            <a class="menu-item sub academic-sub hidden" href="#"><span class="icon transfer"></span><span>转校管理</span></a>
+            <a class="menu-item sub academic-sub hidden" href="#"><span class="icon card"></span><span>班级管理</span></a>
+            <a class="menu-item sub academic-sub hidden" href="#"><span class="icon user"></span><span>学生管理</span></a>
+            <a class="menu-item sub academic-sub hidden" href="#"><span class="icon teacher"></span><span>教师管理</span></a>
+            <a class="menu-item sub academic-sub hidden" href="#"><span class="icon play"></span><span>开课设置</span></a>
+            <a class="menu-item sub academic-sub hidden" id="homeLaborMenu" href="#"><span class="icon doc"></span><span>家庭劳动</span></a>
+            <a class="menu-item has-more" href="#"><span class="icon gallery"></span><span>作品管理</span><b>⌄</b></a>
+            <a class="menu-item has-more" href="#"><span class="icon apple"></span><span>报表管理</span><b>⌄</b></a>
+            <a class="menu-item blue has-more open" id="inspectionRootMenu" href="#"><span class="icon check"></span><span>考察管理</span><b>⌃</b></a>
+            <a class="menu-item sub active inspection-sub" id="selfCheckMenu" href="#"><span class="icon inspect"></span><span>校自查考核</span></a>
+            <a class="menu-item sub inspection-sub" href="#"><span class="icon calendar"></span><span>教学考核管理</span></a>
+            <a class="menu-item sub text-only inspection-sub" href="#">劳动课考评管理</a>
+            <a class="menu-item has-more settings" href="#"><span class="icon gear"></span><span>系统设置</span><b>⌄</b></a>
+          </nav>
+          <button class="sidebar-collapse" aria-label="收起侧边栏">≪</button>
+        </aside>
+
+        <main class="main">
+          <div class="breadcrumb">
+            <span class="crumb-home"></span>
+            <span>/</span>
+            <button class="crumb-link" id="backToList">考察管理</button>
+            <span class="detail-crumb hidden">/</span>
+            <strong class="detail-crumb hidden">校自查考核详情</strong>
+          </div>
+
+          <section class="page-card list-view" id="listView">
+            <div class="filter-bar">
+              <label class="filter-field wide">
+                <span>考核教育局类型</span>
+                <button class="select-btn">请选择<i></i></button>
+              </label>
+              <label class="filter-field name">
+                <span>名称</span>
+                <button class="select-btn">请选择<i></i></button>
+              </label>
+              <label class="filter-field month">
+                <span>考核月份</span>
+                <button class="date-range"><em>开始月份</em><b>→</b><em>结束月份</em><i></i></button>
+              </label>
+              <div class="filter-divider"></div>
+              <div class="filter-actions">
+                <button class="reset-btn"><span class="reset-icon">↻</span>重置</button>
+                <button class="query-btn"><span class="search-icon"></span>查询</button>
+              </div>
+            </div>
+
+            <div class="list-toolbar">
+              <button class="create-btn" id="createSelfCheck">创建自查表</button>
+            </div>
+
+            <div class="table-wrap">
+              <table class="check-table">
+                <thead>
+                  <tr>
+                    <th>上报月份</th>
+                    <th>描述说明</th>
+                    <th>教育局类型</th>
+                    <th>名称</th>
+                    <th>状态</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody id="reportTableBody">
+                  <tr id="reportRow">
+                    <td>2026-01</td>
+                    <td></td>
+                    <td>市级</td>
+                    <td>张伟的自查表教育创建</td>
+                    <td><span class="status-pass">已通过</span></td>
+                    <td>2026-09-17 16:41:16</td>
+                    <td><button class="link-btn" id="viewReport">查看</button></td>
+                  </tr>
+                  <tr id="demoPendingRow">
+                    <td>2026-01</td>
+                    <td>111</td>
+                    <td>市级</td>
+                    <td>张伟的自查表教育创建</td>
+                    <td><span class="status-pending">未提审</span></td>
+                    <td>2026-09-18 13:16:19</td>
+                    <td>
+                      <div class="table-actions">
+                        <button class="link-btn created-report-view">查看</button>
+                        <button class="link-btn created-report-edit">编辑</button>
+                        <button class="link-btn created-report-submit">提交审核</button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="pagination">
+              <span id="reportTotal">共 2 条数据</span>
+              <button class="page-current">1</button>
+              <button class="page-size">10 条/页 <i></i></button>
+            </div>
+          </section>
+
+          <section class="page-card menu-placeholder hidden" id="academicPlaceholder">
+            <div class="placeholder-content">
+              <h1 id="academicTitle">转校管理</h1>
+              <p>当前已切换到教务管理菜单，可继续选择左侧其他子菜单。</p>
+            </div>
+          </section>
+
+          <section class="page-card home-labor-list hidden" id="homeLaborList">
+            <div class="labor-head">
+              <h1 id="courseTotal">共计 2 门</h1>
+              <button class="create-btn">创建家庭劳动</button>
+            </div>
+
+            <div class="course-grid">
+              <article class="course-card" id="schoolCourseCard">
+                <div class="course-icon"><span></span></div>
+                <div class="course-copy">
+                  <h2>张伟的家庭劳动课</h2>
+                  <p>共计 2 项任务</p>
+                </div>
+                <div class="course-actions">
+                  <button class="view-course" id="viewFirstCourse">查看</button>
+                  <button class="course-delete" id="deleteSchoolCourse" aria-label="删除张伟的家庭劳动课">
+                    <svg class="trash-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M10 11v6" />
+                      <path d="M14 11v6" />
+                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+                      <path d="M3 6h18" />
+                      <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                    </svg>
+                  </button>
+                </div>
+              </article>
+
+              <article class="course-card">
+                <div class="course-icon"><span></span></div>
+                <div class="course-copy">
+                  <h2>张伟的家庭劳动课运营平台创建</h2>
+                  <p>共计 2 项任务</p>
+                </div>
+                <div class="course-actions">
+                  <button class="view-course">查看</button>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="page-card home-labor-detail hidden" id="homeLaborDetail">
+            <div class="labor-detail-inner">
+              <div class="labor-detail-head">
+                <h1>张伟的家庭劳动课</h1>
+                <div class="labor-view-actions">
+                  <button class="edit-btn" id="editChecklist">编辑清单</button>
+                </div>
+                <div class="labor-manage-actions hidden">
+                  <button class="save-btn">添加</button>
+                  <button class="save-btn" id="saveChecklist">保存</button>
+                </div>
+              </div>
+
+              <div class="task-card" id="taskCard">
+                <article class="task-row">
+                  <div class="task-visual clean" aria-hidden="true">
+                    <span class="broom-handle"></span>
+                    <span class="broom-head"></span>
+                    <span class="spark s1"></span>
+                    <span class="spark s2"></span>
+                    <span class="spark s3"></span>
+                  </div>
+                  <div class="task-copy">
+                    <h2>清洁与卫生</h2>
+                    <p>任务名称： 张伟的家庭劳动课任务1</p>
+                  </div>
+                  <div class="target-badge blue">目标<br />次数</div>
+                  <div class="target-count"><strong>1</strong><span>次</span></div>
+                  <div class="task-actions">
+                    <button class="row-edit">编辑</button>
+                    <button class="row-delete visible">删除</button>
+                  </div>
+                </article>
+
+                <article class="task-row">
+                  <div class="task-visual storage" aria-hidden="true"><span></span></div>
+                  <div class="task-copy">
+                    <h2>整理与收纳</h2>
+                    <p>任务名称： 张伟的家庭劳动课任务2</p>
+                  </div>
+                  <div class="target-badge red">目标<br />次数</div>
+                  <div class="target-count"><strong>1</strong><span>次</span></div>
+                  <div class="task-actions">
+                    <button class="row-edit">编辑</button>
+                    <button class="row-delete visible">删除</button>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </section>
+
+          <section class="create-check-page hidden" id="createCheckView">
+            <div class="create-form">
+              <label class="create-row required">
+                <span>月份</span>
+                <div class="create-control month-control">
+                  <input id="createMonth" value="2026-01" />
+                  <i></i>
+                </div>
+              </label>
+
+              <label class="create-row textarea-row">
+                <span>描述说明</span>
+                <textarea id="createDescription" placeholder="请输入描述说明"></textarea>
+              </label>
+
+              <label class="create-row required">
+                <span>上报教育局类型</span>
+                <button class="create-select" id="createBureauType">市级<i></i></button>
+              </label>
+
+              <label class="create-row required">
+                <span>选择模板</span>
+                <button class="create-select focused" id="createTemplate">张伟的自查表教育创建<i></i></button>
+              </label>
+            </div>
+
+            <h1 class="create-title">张伟的自查表教育创建</h1>
+
+            <table class="create-table">
+              <thead>
+                <tr>
+                  <th>序号</th>
+                  <th>检查项目</th>
+                  <th>检查内容</th>
+                  <th>检查指标</th>
+                  <th>检查结果</th>
+                  <th>下一步整改措施<br />（未完成的填写）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>我是标题</td>
+                  <td>我是标题</td>
+                  <td>我是标题</td>
+                  <td><label class="radio-line"><span></span><input id="createCheckResult" value="我是标题" /></label></td>
+                  <td><input id="createRectification" placeholder="请输入" /></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="upload-actions">
+              <button class="upload-btn" id="createUploadAttachment">
+                <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 3v12" />
+                  <path d="m17 8-5-5-5 5" />
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                </svg>
+                <span>上传附件</span>
+              </button>
+              <input class="file-input" id="createUploadInput" type="file" accept="image/*,application/pdf" multiple />
+            </div>
+
+            <div class="create-attachments hidden" id="createAttachmentPanel">
+              <div class="section-title">
+                <h2>附件材料</h2>
+                <span id="createAttachmentCount">共 0 个</span>
+              </div>
+              <div class="attachment-list" id="createAttachmentList"></div>
+            </div>
+
+            <div class="create-actions">
+              <button class="self-note-btn" id="selfNoteToggle">自查说明</button>
+            </div>
+
+            <div class="self-note-editor hidden" id="selfNoteEditor">
+              <div class="self-note-label">自查说明</div>
+              <div class="editor-shell">
+                <div class="editor-menubar">
+                  <span>文件</span>
+                  <span>编辑</span>
+                  <span>插入</span>
+                  <span>视图</span>
+                  <span>格式</span>
+                  <button>上传资源</button>
+                </div>
+                <div class="editor-toolbar">
+                  <button>12pt⌄</button>
+                  <button>☰</button>
+                  <button>⌕</button>
+                  <button>B</button>
+                  <button><i>I</i></button>
+                  <button>U</button>
+                  <button>S</button>
+                  <button>≡</button>
+                  <button>☷</button>
+                  <button>☰</button>
+                  <button>“”</button>
+                  <button>↶</button>
+                  <button>↷</button>
+                  <button>Tₓ</button>
+                  <button>x₂</button>
+                  <button>x²</button>
+                  <button>&lt;&gt;</button>
+                  <button>{}</button>
+                </div>
+                <div class="editor-toolbar second">
+                  <button>—</button>
+                  <button>☷</button>
+                  <button>☑</button>
+                  <button>🔗</button>
+                  <button>◉</button>
+                  <button>▮</button>
+                  <button>▣</button>
+                  <button>◷</button>
+                  <button>▶</button>
+                  <button>A</button>
+                  <button>▰</button>
+                  <button>⌁</button>
+                  <button>⛶</button>
+                </div>
+                <textarea id="createSelfNoteText" aria-label="自查说明内容"></textarea>
+                <div class="editor-footer"><span>P</span><span>0 字</span></div>
+              </div>
+              <button class="delete-note-btn" id="deleteSelfNote">删除</button>
+            </div>
+
+            <div class="submit-actions">
+              <button class="back-btn" id="cancelCreate">返回</button>
+              <button class="submit-btn" id="submitCreate">提交</button>
+            </div>
+          </section>
+
+          <section class="page-card detail-view hidden" id="detailView">
+            <div class="readonly-summary">
+              <div><strong>月份</strong><span id="detailMonth">2026-01</span></div>
+              <div><strong>描述说明</strong><span id="detailDescription">--</span></div>
+              <div><strong>上报教育局类型</strong><span id="detailBureauType">市级</span></div>
+              <div><strong>模板</strong><span id="detailTemplate">张伟的自查表教育创建</span></div>
+            </div>
+
+            <h1 class="readonly-title" id="detailTitle">张伟的自查表教育创建</h1>
+
+            <table class="readonly-table">
+              <thead>
+                <tr>
+                  <th>序号</th>
+                  <th>检查项目</th>
+                  <th>检查内容</th>
+                  <th>检查指标</th>
+                  <th>检查结果</th>
+                  <th>下一步整改措施<br />（未完成的填写）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>我是标题</td>
+                  <td>我是标题</td>
+                  <td>我是标题</td>
+                  <td id="detailCheckResult">我是标题</td>
+                  <td id="detailRectification">--</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="readonly-row" id="detailSelfNoteRow"><strong>自查说明1：</strong><span id="detailSelfNote">--</span></div>
+            <div class="readonly-row" id="detailReviewRow"><strong>审核结果：</strong><span>已通过</span></div>
+
+            <div class="readonly-attachments hidden" id="detailAttachmentPanel">
+              <div class="section-title">
+                <h2>附件材料</h2>
+                <span id="attachmentCount">共 0 个</span>
+              </div>
+              <div class="attachment-list" id="attachmentList"></div>
+            </div>
+          </section>
+        </main>
+      </div>
+
+      <div class="float-tab parent-code">家<br />长<br />小<br />程<br />序<br />码<br />≪</div>
+      <div class="float-tab teacher-code">教<br />师<br />小<br />程<br />序<br />码<br />≪</div>
+
+      <div class="modal-mask hidden" id="deleteModal" role="dialog" aria-modal="true" aria-labelledby="deleteTitle">
+        <div class="confirm-modal">
+          <div class="confirm-icon">!</div>
+          <div class="confirm-content">
+            <h2 id="deleteTitle">确认删除附件？</h2>
+            <p id="deleteMessage">删除后该附件将从校自查考核表单中移除。</p>
+          </div>
+          <div class="confirm-actions">
+            <button class="cancel-btn" id="cancelDelete">取消</button>
+            <button class="danger-btn" id="confirmDelete">确认删除</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-mask hidden" id="previewModal" role="dialog" aria-modal="true" aria-labelledby="previewTitle">
+        <button class="preview-close" id="closePreview" aria-label="关闭预览">×</button>
+        <h2 class="visually-hidden" id="previewTitle">附件预览</h2>
+        <div class="preview-body" id="previewBody"></div>
+        <div class="preview-tools" aria-hidden="true">
+          <span>⌕</span>
+          <span>⊕</span>
+          <span>▣</span>
+          <span>90°</span>
+          <span>90°</span>
+        </div>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
