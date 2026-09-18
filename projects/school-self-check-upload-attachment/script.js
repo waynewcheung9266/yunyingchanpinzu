@@ -439,7 +439,7 @@ function addCreatedReportToList() {
       </div>
     </td>
   `;
-  reportTableBody.prepend(row);
+  reportTableBody.appendChild(row);
   bindCreatedReportActions(row);
   createdReportAdded = true;
   reportTotal.textContent = "共 3 条数据";
