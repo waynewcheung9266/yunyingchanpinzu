@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="456" height="320" viewBox="0 0 456 320" role="img" aria-label="特色校本课封面">
+  <defs>
+    <linearGradient id="green" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#10c936"/>
+      <stop offset="1" stop-color="#19b64a"/>
+    </linearGradient>
+    <linearGradient id="suit" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ff4b4b"/>
+      <stop offset="1" stop-color="#d7192c"/>
+    </linearGradient>
+  </defs>
+  <rect width="456" height="320" rx="12" fill="url(#green)"/>
+  <circle cx="72" cy="52" r="42" fill="#fff" opacity=".08"/>
+  <circle cx="386" cy="78" r="66" fill="#fff" opacity=".08"/>
+  <g transform="translate(170 18)">
+    <path d="M61 94c-30 9-44 36-43 67l8 84h28l6-68 17 1 7 67h29l7-84c1-32-17-58-49-67z" fill="url(#suit)"/>
+    <path d="M36 111c-22 18-33 43-34 75h28c2-23 8-40 22-53z" fill="#e51f34"/>
+    <path d="M105 112c26 14 41 37 47 68l-27 7c-5-22-14-39-31-50z" fill="#e51f34"/>
+    <path d="M28 246h34v18c0 7-5 12-12 12H30zM82 246h34l-2 30H94c-7 0-12-5-12-12z" fill="#d7192c"/>
+    <rect x="45" y="111" width="63" height="56" rx="8" fill="#f6fbff"/>
+    <rect x="54" y="122" width="45" height="31" rx="4" fill="#dce8f8"/>
+    <path d="M53 178h48" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+    <path d="M29 84c-7-37 13-73 49-78 38-5 68 26 65 65-3 43-38 67-70 60-21-5-38-21-44-47z" fill="#f0c49b"/>
+    <circle cx="80" cy="69" r="56" fill="none" stroke="#f4f8ff" stroke-width="12"/>
+    <circle cx="80" cy="69" r="45" fill="#f1c29a"/>
+    <path d="M38 61c4-32 25-53 53-48 22 4 36 20 38 43-26 4-51-2-75-17-7 6-12 13-16 22z" fill="#7b4a24"/>
+    <circle cx="62" cy="77" r="6" fill="#2c1c13"/>
+    <circle cx="99" cy="77" r="6" fill="#2c1c13"/>
+    <path d="M68 99c10 7 22 7 32 0" fill="none" stroke="#b44d42" stroke-width="4" stroke-linecap="round"/>
+    <path d="M25 35c-20 12-29 29-25 51 16-2 28-11 36-27z" fill="#e51f34"/>
+    <path d="M41 35c-13 12-20 25-19 41" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+    <path d="M118 35c14 13 20 28 18 44" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>劳动课评价管理</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="logo-mark" aria-hidden="true">‹</div>
+          <strong>张伟的学校</strong>
+          <button class="school-switch" type="button">学校 <span>▾</span></button>
+        </div>
+        <nav class="module-nav" aria-label="顶部模块">
+          <button type="button">研学</button>
+          <button type="button">课后服务</button>
+          <button class="active" type="button">劳动课</button>
+        </nav>
+        <div class="top-actions">
+          <button class="icon-button" type="button" aria-label="全屏">⌘</button>
+          <button class="avatar-button" type="button" aria-label="张伟">张</button>
+        </div>
+      </header>
+
+      <aside class="sidebar" aria-label="主菜单">
+        <button class="nav-item" data-page="placeholder" type="button">
+          <span class="nav-icon">▧</span><span>数据大屏</span>
+        </button>
+        <button class="nav-item" data-page="placeholder" type="button">
+          <span class="nav-icon">⌂</span><span>数据看板</span>
+        </button>
+
+        <section class="nav-group">
+          <button class="nav-item group-toggle" type="button">
+            <span class="nav-icon">▧</span><span>劳动周</span><span class="chevron">⌄</span>
+          </button>
+        </section>
+
+        <section class="nav-group">
+          <button class="nav-item group-toggle" type="button">
+            <span class="nav-icon">□</span><span>精品研学课程库</span><span class="chevron">⌄</span>
+          </button>
+        </section>
+
+        <section class="nav-group">
+          <button class="nav-item group-toggle" type="button">
+            <span class="nav-icon">⚑</span><span>活动管理</span><span class="chevron">⌄</span>
+          </button>
+        </section>
+
+        <section class="nav-group expanded">
+          <button class="nav-item group-toggle active-parent" type="button">
+            <span class="nav-icon">▦</span><span>教学管理</span><span class="chevron">⌃</span>
+          </button>
+          <div class="submenu">
+            <button class="nav-item child" data-page="course" type="button">
+              <span class="nav-icon">▣</span><span>课程教学</span>
+            </button>
+            <button class="nav-item child selected" data-page="labor" type="button">
+              <span class="nav-icon">☆</span><span>劳动评价</span>
+            </button>
+            <button class="nav-item child" data-page="practice" type="button">
+              <span class="nav-icon">◔</span><span>课外劳动实践</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="nav-group">
+          <button class="nav-item group-toggle" type="button">
+            <span class="nav-icon">▤</span><span>教务管理</span><span class="chevron">⌄</span>
+          </button>
+        </section>
+        <section class="nav-group">
+          <button class="nav-item group-toggle" type="button">
+            <span class="nav-icon">▨</span><span>作品管理</span><span class="chevron">⌄</span>
+          </button>
+        </section>
+        <section class="nav-group">
+          <button class="nav-item group-toggle" type="button">
+            <span class="nav-icon">●</span><span>报表管理</span><span class="chevron">⌄</span>
+          </button>
+        </section>
+        <section class="nav-group">
+          <button class="nav-item group-toggle" type="button">
+            <span class="nav-icon">✓</span><span>考察管理</span><span class="chevron">⌄</span>
+          </button>
+          <div class="submenu">
+            <button class="nav-item child" data-page="inspection" type="button">劳动课考评管理</button>
+          </div>
+        </section>
+        <section class="nav-group">
+          <button class="nav-item group-toggle" type="button">
+            <span class="nav-icon">⚙</span><span>系统设置</span><span class="chevron">⌄</span>
+          </button>
+        </section>
+
+        <button class="collapse-button" type="button" aria-label="收起侧边栏">≪</button>
+      </aside>
+
+      <main class="main">
+        <section class="page labor-page" data-panel="labor">
+          <div class="breadcrumb">
+            <span>⌂</span><span>/</span><span>教学管理</span><span>/</span><strong>劳动评价</strong>
+          </div>
+
+          <section class="filter-panel">
+            <div class="tabs">
+              <button class="tab active" data-tab="course" type="button">课程评价</button>
+              <button class="tab" data-tab="home" type="button">家庭劳动评价</button>
+              <button class="primary-action" id="smartEvaluate" type="button">一键智能评价</button>
+            </div>
+
+            <div class="filter-row">
+              <span class="filter-label">学年：</span>
+              <button class="pill active" type="button">2026~2027</button>
+              <button class="pill" type="button">2025~2026</button>
+            </div>
+            <div class="filter-row">
+              <span class="filter-label">学期：</span>
+              <button class="pill active" type="button">2026上学期</button>
+            </div>
+            <div class="filter-row">
+              <span class="filter-label">状态：</span>
+              <button class="pill active" data-filter="all" type="button">全部</button>
+              <button class="pill" data-filter="pending" type="button">未评价</button>
+              <button class="pill" data-filter="done" type="button">已评价</button>
+            </div>
+            <div class="filter-row">
+              <span class="filter-label">年级：</span>
+              <button class="pill active" type="button">全部</button>
+              <button class="pill" type="button">一年级</button>
+              <button class="pill" type="button">二年级</button>
+              <button class="pill" type="button">三年级</button>
+              <button class="pill" type="button">四年级</button>
+              <button class="pill" type="button">五年级</button>
+              <button class="pill" type="button">六年级</button>
+            </div>
+            <div class="filter-row">
+              <span class="filter-label">班级：</span>
+              <button class="pill active" type="button">全部</button>
+              <button class="pill" type="button">1班</button>
+              <button class="pill" type="button">2</button>
+            </div>
+          </section>
+
+          <div class="result-meta">共计 <strong id="visibleCount">2</strong> 条</div>
+          <section class="course-grid" id="courseGrid" aria-label="劳动评价列表"></section>
+          <p class="end-text">没有更多了～</p>
+        </section>
+
+        <section class="page placeholder-page hidden" data-panel="placeholder">
+          <div class="empty-state">
+            <h1>原考察管理功能已保留</h1>
+            <p>这里保留原有后台菜单和切换入口，当前新增页面位于“教学管理 / 劳动评价”。</p>
+          </div>
+        </section>
+      </main>
+
+      <aside class="floating-help blue">家<br />长<br />小<br />程<br />序<br />码<br />‹</aside>
+      <aside class="floating-help green">教<br />师<br />小<br />程<br />序<br />码<br />‹</aside>
+    </div>
+
+    <dialog class="rating-dialog" id="ratingDialog">
+      <form method="dialog">
+        <div class="dialog-head">
+          <h2>劳动课程评价</h2>
+          <button class="close-button" value="cancel" aria-label="关闭">×</button>
+        </div>
+        <div class="dialog-body">
+          <label>
+            <span>评价等级</span>
+            <select id="ratingLevel">
+              <option selected>优秀</option>
+              <option>良好</option>
+              <option>合格</option>
+              <option>待提升</option>
+            </select>
+          </label>
+          <label>
+            <span>评价内容</span>
+            <textarea id="ratingComment" rows="4">学生能够主动参与劳动课程，完成度高，过程表现认真，建议继续保持。</textarea>
+          </label>
+        </div>
+        <div class="dialog-actions">
+          <button class="ghost-action" value="cancel" type="submit">取消</button>
+          <button class="primary-action" id="saveRating" value="default" type="submit">确认评价</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="smart-dialog" id="smartDialog">
+      <form method="dialog">
+        <div class="smart-dialog-head">
+          <h2>评价完成</h2>
+          <div class="smart-dialog-tools">
+            <button class="tool-button" type="button" aria-label="全屏">⌘</button>
+            <button class="close-button" value="cancel" aria-label="关闭">×</button>
+          </div>
+        </div>
+        <div class="smart-dialog-body">
+          <div class="success-mark" aria-hidden="true">✓</div>
+          <p class="success-copy">恭喜，评价已完成，是否确认结果?</p>
+
+          <section class="smart-summary">
+            <h3>当前评价结果</h3>
+            <div class="summary-progress">
+              <span>已评价</span>
+              <div class="summary-track"><span></span></div>
+              <strong id="smartProgressText">1/1</strong>
+            </div>
+          </section>
+
+          <div class="grade-counts">
+            <span>优秀： <strong id="excellentCount">1</strong></span>
+            <span>良好： <strong>0</strong></span>
+            <span>合格： <strong>0</strong></span>
+            <span>不合格： <strong>0</strong></span>
+          </div>
+
+          <div class="result-table-wrap">
+            <table class="result-table">
+              <thead>
+                <tr>
+                  <th>学生姓名</th>
+                  <th>年级班级</th>
+                  <th>评价结果</th>
+                  <th>成绩</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="smartResultRows"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="smart-dialog-actions">
+          <button class="ghost-action" value="cancel" type="submit">取消</button>
+          <button class="primary-action" id="confirmSmartResult" value="default" type="submit">确认结果</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="start-smart-dialog" id="startSmartDialog">
+      <form method="dialog">
+        <div class="start-smart-head">
+          <h2>一键智能评价</h2>
+          <div class="smart-dialog-tools">
+            <button class="tool-button" type="button" aria-label="全屏">⌘</button>
+            <button class="close-button" value="cancel" aria-label="关闭">×</button>
+          </div>
+        </div>
+        <div class="start-smart-body">
+          <p>
+            一键智能评价是结合学生课程学习完成度、劳动实践任务完成情况、作业提交完整性、家长评价和同学点赞，进行综合计算对学生进行评价，评价结果最终由您进行最终确定,是否确认开始智能评价?
+          </p>
+          <section class="pending-task-card">
+            <h3>待评价任务</h3>
+            <div class="pending-task-row">
+              <div class="task-icon" id="pendingTaskIcon" aria-hidden="true">▣</div>
+              <span>课程评价条数</span>
+              <strong id="pendingTaskCount">1</strong>
+            </div>
+          </section>
+        </div>
+        <div class="start-smart-actions">
+          <button class="ghost-action" value="cancel" type="submit">取消</button>
+          <button class="primary-action" id="startSmartButton" type="button">开始评价</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="home-processing-dialog" id="homeProcessingDialog">
+      <form method="dialog">
+        <div class="start-smart-head">
+          <h2>评价中</h2>
+        </div>
+        <div class="home-processing-body">
+          <section class="processing-stage" id="processingStage">
+            <div class="processing-student-card">
+              <div class="processing-avatar" aria-hidden="true">🐱</div>
+              <div>
+                <strong id="processingStudentName">刘嘉琪</strong>
+                <span id="processingClassName">二年级 1班</span>
+                <small>◆</small>
+              </div>
+            </div>
+
+            <section class="indicator-grid" id="indicatorGrid">
+              <div class="indicator-item" data-step="0">课程学习情况... <span>正在分析...</span></div>
+              <div class="indicator-item" data-step="1">家长评价... <span>正在分析...</span></div>
+              <div class="indicator-item" data-step="2">同学点赞... <span>正在分析...</span></div>
+              <div class="indicator-item" data-step="3">心得与劳动作业... <span>正在分析...</span></div>
+            </section>
+          </section>
+
+          <section class="smart-summary processing-summary">
+            <h3>当前评价结果</h3>
+            <div class="summary-progress">
+              <span>已评价</span>
+              <div class="summary-track"><span id="processingProgressBar"></span></div>
+              <strong id="processingProgressText">0/3</strong>
+            </div>
+            <div class="grade-counts">
+              <span>优秀： <strong id="processingExcellent">0</strong></span>
+              <span>良好： <strong>0</strong></span>
+              <span>合格： <strong>0</strong></span>
+              <span>不合格： <strong>0</strong></span>
+            </div>
+          </section>
+        </div>
+        <div class="home-processing-actions">
+          <button class="primary-action" id="pauseProcessingButton" type="button">暂停</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

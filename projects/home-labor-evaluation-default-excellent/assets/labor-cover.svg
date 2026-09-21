@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="456" height="320" viewBox="0 0 456 320" role="img" aria-label="劳动课程封面">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#075fff"/>
+      <stop offset="1" stop-color="#19b8ff"/>
+    </linearGradient>
+    <linearGradient id="band" x1="0" x2="1">
+      <stop offset="0" stop-color="#f15d13"/>
+      <stop offset=".55" stop-color="#ff9e1b"/>
+      <stop offset="1" stop-color="#e33c1c"/>
+    </linearGradient>
+  </defs>
+  <rect width="456" height="320" rx="12" fill="url(#bg)"/>
+  <circle cx="352" cy="42" r="64" fill="#fff" opacity=".08"/>
+  <circle cx="71" cy="62" r="42" fill="#fff" opacity=".07"/>
+  <g transform="translate(83 28)">
+    <path d="M93 116c-35-20-54-58-42-92 13-36 52 5 52 5s27-46 52-11c21 29 7 75-24 96z" fill="#6d3b21"/>
+    <path d="M216 116c35-20 54-58 42-92-13-36-52 5-52 5s-27-46-52-11c-21 29-7 75 24 96z" fill="#6d3b21"/>
+    <path d="M74 167c-39 12-72-5-70-29 2-23 40-20 69 3z" fill="#ffa06f"/>
+    <path d="M236 167c39 12 72-5 70-29-2-23-40-20-69 3z" fill="#ffa06f"/>
+    <path d="M75 132c-18-38-2-90 41-109 22-10 40 0 40 0s19-10 41 0c43 19 59 71 41 109 19 11 31 33 31 59 0 56-51 93-113 93S43 247 43 191c0-26 12-48 32-59z" fill="#f7d2ae"/>
+    <g fill="#fff4e9">
+      <circle cx="83" cy="71" r="31"/>
+      <circle cx="118" cy="44" r="34"/>
+      <circle cx="158" cy="37" r="37"/>
+      <circle cx="199" cy="46" r="34"/>
+      <circle cx="232" cy="77" r="31"/>
+      <circle cx="90" cy="111" r="32"/>
+      <circle cx="135" cy="92" r="36"/>
+      <circle cx="179" cy="92" r="39"/>
+      <circle cx="222" cy="112" r="31"/>
+    </g>
+    <path d="M103 168c15 16 35 25 54 25s38-9 53-25" fill="none" stroke="#8e4b2b" stroke-width="7" stroke-linecap="round"/>
+    <ellipse cx="109" cy="149" rx="24" ry="29" fill="#fff"/>
+    <ellipse cx="199" cy="149" rx="24" ry="29" fill="#fff"/>
+    <circle cx="114" cy="151" r="12" fill="#3c2517"/>
+    <circle cx="194" cy="151" r="12" fill="#3c2517"/>
+    <circle cx="119" cy="144" r="4" fill="#fff"/>
+    <circle cx="199" cy="144" r="4" fill="#fff"/>
+    <path d="M153 167c8 3 14 3 20 0 1 13-4 20-10 20s-11-7-10-20z" fill="#e97464"/>
+    <path d="M139 211c15-19 38-19 54 0" fill="none" stroke="#8e4b2b" stroke-width="5" stroke-linecap="round"/>
+    <path d="M173 194c19 4 30 17 29 42" fill="none" stroke="#f2b48e" stroke-width="17" stroke-linecap="round"/>
+    <path d="M175 194c17 4 27 17 26 39" fill="none" stroke="#8e4b2b" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <path d="M0 271c74 29 142 28 230 0 88-29 164-28 226 1v48H0z" fill="url(#band)"/>
+  <path d="M0 263c76 29 144 29 230 0 88-28 164-27 226 1" fill="none" stroke="#ffd337" stroke-width="8"/>
+</svg>
