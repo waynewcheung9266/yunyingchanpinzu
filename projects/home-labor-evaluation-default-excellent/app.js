@@ -67,6 +67,11 @@ const processingProgressBar = document.querySelector("#processingProgressBar");
 const processingProgressText = document.querySelector("#processingProgressText");
 const processingExcellent = document.querySelector("#processingExcellent");
 const pauseProcessingButton = document.querySelector("#pauseProcessingButton");
+const homeGradeDialog = document.querySelector("#homeGradeDialog");
+const gradeStudentName = document.querySelector("#gradeStudentName");
+const gradeClassName = document.querySelector("#gradeClassName");
+const gradeSmartResult = document.querySelector("#gradeSmartResult");
+const saveHomeGrade = document.querySelector("#saveHomeGrade");
 
 function activeList() {
   return activeTab === "home" ? homeEvaluations : courseEvaluations;
@@ -227,6 +232,13 @@ function updateProcessingProgress(completedStudents) {
   processingExcellent.textContent = String(completedStudents);
 }
 
+function openHomeGradeDialog(item) {
+  gradeStudentName.textContent = item.student;
+  gradeClassName.textContent = `${item.className} 1班`;
+  gradeSmartResult.textContent = item.result || "优秀";
+  homeGradeDialog.showModal();
+}
+
 function finishHomeProcessing() {
   homeSmartRows.forEach((item) => {
     item.status = "done";
@@ -379,9 +391,27 @@ smartResultRows.addEventListener("click", (event) => {
   if (!button) return;
   editingId = Number(button.dataset.id);
   smartDialog.close();
+  if (activeTab === "home") {
+    const item = homeEvaluations.find((entry) => entry.id === editingId) || homeSmartRows.find((entry) => entry.id === editingId);
+    openHomeGradeDialog(item);
+    return;
+  }
+
   dialogTitle.textContent = activeTab === "home" ? "家庭劳动评价" : "劳动课程评价";
   document.querySelector("#ratingLevel").value = "优秀";
   dialog.showModal();
+});
+
+saveHomeGrade.addEventListener("click", () => {
+  if (!editingId) return;
+  const item = homeEvaluations.find((entry) => entry.id === editingId);
+  if (!item) return;
+  item.status = "done";
+  item.progress = 100;
+  item.result = "优秀";
+  item.score = "优秀";
+  renderSmartDialog();
+  renderEvaluations();
 });
 
 confirmSmartResult.addEventListener("click", () => {

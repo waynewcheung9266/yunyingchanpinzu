@@ -316,6 +316,63 @@
       </form>
     </dialog>
 
+    <dialog class="home-grade-dialog" id="homeGradeDialog">
+      <form method="dialog">
+        <div class="home-grade-head">
+          <h2>修改成绩</h2>
+          <div class="smart-dialog-tools">
+            <button class="tool-button" type="button" aria-label="全屏">⌘</button>
+            <button class="close-button" value="cancel" aria-label="关闭">×</button>
+          </div>
+        </div>
+        <div class="home-grade-body">
+          <section class="grade-student-card">
+            <div class="grade-student-left">
+              <div class="grade-avatar" aria-hidden="true">🦊</div>
+              <div>
+                <strong id="gradeStudentName">赵一诺</strong>
+                <span id="gradeClassName">二年级 1班</span>
+                <small>◆</small>
+              </div>
+            </div>
+            <div class="grade-result">智能评价结果： <strong id="gradeSmartResult">优秀</strong></div>
+          </section>
+
+          <section class="grade-indicators">
+            <div class="indicator-item done">课程学习情况... <span>已完成</span></div>
+            <div class="indicator-item done">家长评价... <span>已完成</span></div>
+            <div class="indicator-item done">同学点赞... <span>已完成</span></div>
+            <div class="indicator-item done">心得与劳动作业... <span>已完成</span></div>
+          </section>
+
+          <section class="teacher-evaluation">
+            <h3>评价</h3>
+            <div class="teacher-score-row">
+              <div class="score-label">
+                <strong>教师评价学生</strong>
+                <span title="提示">?</span>
+              </div>
+              <div class="stars" aria-label="五星优秀">
+                <button class="star active" type="button">★</button>
+                <button class="star active" type="button">★</button>
+                <button class="star active" type="button">★</button>
+                <button class="star active" type="button">★</button>
+                <button class="star active" type="button">★</button>
+              </div>
+            </div>
+            <label class="comment-field">
+              <span>评语</span>
+              <textarea id="homeGradeComment" rows="4">表现很棒，能够积极参与家庭劳动任务，完成质量高，能主动整理劳动过程并保持良好的劳动习惯，希望继续保持。</textarea>
+            </label>
+          </section>
+        </div>
+        <div class="home-grade-actions">
+          <button class="ghost-action" value="cancel" type="submit">取消</button>
+          <button class="primary-action" id="saveHomeGrade" value="default" type="submit">确定修改</button>
+        </div>
+      </form>
+    </dialog>
+
     <script src="./app.js"></script>
   </body>
 </html>
