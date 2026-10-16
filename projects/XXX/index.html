@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>课后选课</title>
+<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="institution.css?v=7">
+<link rel="stylesheet" href="school.css?v=9">
+<link rel="stylesheet" href="course-students.css?v=9">
+<link rel="stylesheet" href="overview.css?v=12">
+</head>
+<body>
+<nav class="demo-switch" aria-label="演示端切换">
+  <button type="button" data-view="institution" aria-pressed="false">机构端</button>
+  <button type="button" data-view="school" aria-pressed="false">学校端</button>
+  <button type="button" data-view="parent" aria-pressed="true">家长小程序</button>
+</nav>
+<section id="institution" class="institution" hidden>
+  <header class="org-topbar"><div class="org-account"><span class="org-logo">课</span><strong>张伟的机构</strong><span class="org-divider"></span><span>机构⌄</span></div><nav class="org-product"><button>研学</button><button class="active">课后服务</button></nav><div class="org-tools"><span class="notification" title="通知">♧<b>2</b></span><button title="全屏" id="org-fullscreen">⛶</button><span class="org-avatar">张</span></div></header>
+  <aside class="org-sidebar"><nav id="org-menu"></nav><button class="org-collapse" title="收起菜单">«</button></aside>
+  <main class="org-main"><div class="org-breadcrumb"><span>⌂</span><span>/</span>学校排课明细</div>
+    <section class="org-workspace">
+      <form id="org-filters" class="org-filters">
+        <div class="org-filter-grid">
+          <label>学年<select name="year"><option>2026~2027学年</option><option>2025~2026学年</option></select></label>
+          <label>学期<select name="term"><option>上学期</option><option>下学期</option></select></label>
+          <label>课程名称<select name="course"><option value="">请选择</option><option>ZW课后服务课程2</option></select></label>
+          <label>教学班<select name="class"><option value="">请选择</option><option>一年级</option><option>二年级</option><option>三年级</option></select></label>
+          <label>区域<select name="region"><option value="">请选择</option><option>驻马店市</option></select></label>
+          <label>学校<select name="school"><option value="">请选择</option><option>演示学校</option></select></label>
+          <label class="org-extra" hidden>物料类型<select name="material"><option value="">请选择</option><option>无物料</option></select></label>
+        </div>
+        <div class="org-filter-actions"><button type="submit" class="org-primary">⌕&nbsp; 查询</button><button type="button" id="org-expand" class="org-link">展开⌄</button></div>
+      </form>
+      <div class="org-table-actions"><button id="org-export" class="org-primary">↥&nbsp; 导出</button></div>
+      <div class="org-table-wrap"><table class="org-table"><colgroup><col style="width:48px"><col><col><col><col><col><col><col style="width:120px"></colgroup><thead><tr><th>序号</th><th>课程名称</th><th>适用年级</th><th>课时数</th><th>总价(元)</th><th>物料类型</th><th>物料</th><th>操作</th></tr></thead><tbody id="org-rows"></tbody></table></div>
+      <footer class="org-pagination"><span id="org-total">共 9 条数据</span><button aria-current="page">1</button><select aria-label="每页条数"><option>10 条/页</option><option>20 条/页</option></select></footer>
+    </section>
+  </main><button class="org-qr" title="机构小程序码">机构小程序码<br>«</button>
+</section>
+<section id="admin" class="admin" hidden>
+  <header class="admin-header"><strong id="admin-brand">机构端</strong><span>课后服务管理平台</span></header>
+  <div class="admin-layout"><aside class="admin-sidebar"><span class="sidebar-active">报名管理</span></aside>
+  <section class="admin-content"><div class="admin-heading"><h1>课程报名管理</h1><span id="admin-total">共 0 条报名记录</span></div>
+    <div class="admin-toolbar"><label for="registration-search">课程名称</label><input id="registration-search" type="search" placeholder="输入课程名称搜索"></div>
+    <div class="table-scroll"><table><thead><tr><th>课程名称</th><th>上课时间</th><th>身份证号码</th><th>报名状态</th><th>费用</th></tr></thead><tbody id="registration-rows"><tr><td colspan="5" class="empty-state">暂无报名记录</td></tr></tbody></table></div>
+  </section></div>
+</section>
+<section id="school" class="institution school" hidden>
+  <header class="org-topbar"><div class="org-account"><span class="org-logo school-logo">◔</span><strong>张伟的学校</strong><span class="org-divider"></span><span>学校⌄</span></div><nav class="org-product"><button>研学</button><button class="active">课后服务</button><button>劳动课</button></nav><div class="org-tools"><span title="通知">♧</span><button class="school-fullscreen" title="全屏">⛶</button><span class="org-avatar">张</span></div></header>
+  <aside class="org-sidebar"><nav id="school-menu"></nav><button class="org-collapse school-collapse" title="收起菜单">«</button></aside>
+  <main class="org-main"><div class="org-breadcrumb"><span>⌂</span><span>/</span>选课管理</div><section class="org-workspace">
+    <form id="school-filters" class="org-filters"><div class="org-filter-grid">
+      <label>学年<select name="year"><option>2026~2027</option><option>2025~2026</option></select></label>
+      <label>学期<select name="term"><option>上学期</option><option>下学期</option></select></label>
+      <label>状态<select name="status"><option value="">请选择</option><option>已结束</option><option>已启用</option><option>已停用</option></select></label>
+      <label>方案名称<input name="name" placeholder="输入方案名称搜索"></label>
+    </div><div class="org-filter-actions"><button class="org-primary" type="submit">⌕&nbsp; 查询</button><button class="school-reset" type="reset">⟳&nbsp; 重置</button></div></form>
+    <div class="school-table-actions"><strong id="school-count">共 8 个方案</strong><button id="school-create" class="org-primary">＋ 创建选课方案</button></div>
+    <div class="org-table-wrap school-table-wrap"><table class="org-table school-table"><colgroup><col style="width:55px"><col style="width:14%"><col style="width:17.5%"><col style="width:17.5%"><col style="width:12.5%"><col style="width:90px"><col style="width:13%"><col style="width:235px"></colgroup><thead><tr><th>序号</th><th>方案名称</th><th>预览时间</th><th>选课时间</th><th>开课周期</th><th>状态</th><th>适用年级</th><th>操作</th></tr></thead><tbody id="school-rows"></tbody></table></div>
+    <footer class="org-pagination"><span id="school-total">共 8 条数据</span><button aria-current="page">1</button><select aria-label="方案每页条数"><option>10 条/页</option><option>20 条/页</option></select></footer>
+  </section></main><button class="org-qr school-parent-qr" title="家长小程序码">家长小程序码<br>«</button><button class="org-qr school-teacher-qr" title="教师小程序码">教师小程序码<br>«</button>
+</section>
+<main class="phone">
+  <header class="header" aria-label="课后选课">
+    <img src="reference.PNG" alt="13:52，课后选课，全部，ZW的课后服务学科类型">
+    <button class="hotspot back" aria-label="返回" title="返回"></button>
+    <button class="hotspot home" aria-label="首页" title="首页"></button>
+    <button class="hotspot all" aria-label="全部课程" title="全部课程"></button>
+    <button class="hotspot category" aria-label="ZW的课后服务学科类型" title="ZW的课后服务学科类型"></button>
+    <button class="hotspot filter" aria-label="筛选" title="筛选"></button>
+  </header>
+  <section class="content" aria-label="课程列表">
+    <article class="course">
+      <div class="course-body">
+        <div class="title-row"><h1>ZW课后服务课程2–10151</h1><span class="price"><small>¥</small>0</span></div>
+        <div class="schedule"><span class="day">星期四</span><span class="time">15:00 – 16:00</span><button class="details">查看详情 <span class="chevron"></span></button></div>
+      </div>
+      <footer class="course-footer"><span class="count">已选: <span id="count">0</span>/1</span><button class="select">立即选课</button></footer>
+    </article>
+  </section>
+</main>
+<dialog id="details"><form method="dialog"><h2>课程详情</h2><p>ZW课后服务课程2–10151</p><dl><dt>学科类型</dt><dd>ZW的课后服务学科类型</dd><dt>上课时间</dt><dd>星期四 15:00 – 16:00</dd><dt>课程费用</dt><dd>¥0</dd></dl><button class="confirm">关闭</button></form></dialog>
+<dialog id="filter"><form method="dialog"><h2>筛选</h2><label>上课日期<select id="weekday"><option value="all">全部</option><option value="thu">星期四</option><option value="other">其他日期</option></select></label><div class="actions"><button id="reset" type="button">重置</button><button class="confirm">确定</button></div></form></dialog>
+<dialog id="enrollment" class="enrollment" aria-labelledby="enrollment-title">
+  <form id="enrollment-form" novalidate>
+    <h2 id="enrollment-title">已选课程</h2>
+    <button type="button" class="modal-close" aria-label="关闭" title="关闭">×</button>
+    <div class="selected-course"><span class="course-dot" aria-hidden="true"></span><div><h3>ZW课后服务课程2–10151</h3><p>每周星期四课后第三节(15:00–16:00)</p></div></div>
+    <div class="identity-field">
+      <label for="identity-number"><span><span class="required">*</span> 身份证号码</span></label>
+      <input id="identity-number" name="identityNumber" type="text" required maxlength="18" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="请输入身份证号码" aria-describedby="identity-error">
+      <p id="identity-error" class="field-error" aria-live="polite"></p>
+    </div>
+    <p class="enrollment-question">是否确认选择以上课程?</p>
+    <div class="enrollment-actions"><button type="button" class="enrollment-cancel">取消</button><button type="submit" class="enrollment-submit">确认支付</button></div>
+  </form>
+</dialog>
+<div id="success-toast" class="success-toast" role="status" aria-live="polite" hidden>报名成功</div>
+<dialog id="org-students" class="org-students" aria-labelledby="student-title">
+  <header class="student-header"><h2 id="student-title">学生明细</h2><div><button type="button" id="student-maximize" title="放大" aria-label="放大弹窗">⛶</button><button type="button" id="student-close" title="关闭" aria-label="关闭弹窗">×</button></div></header>
+  <div class="student-body">
+    <section class="student-summary"><strong>选课方案1015导入学生</strong><div class="student-summary-grid"><span><em>教育局名称</em>张伟的教育局</span><span><em>学校名称</em>张伟的学校</span><span><em>课程名称</em>ZW课后服务课程2</span><span><em>教学班</em>1015</span><span><em>归属方案</em>选课方案1015导入学生</span><span><em>归属学年学期</em>2026~2027上学期</span></div></section>
+    <div class="student-toolbar"><button type="button" id="student-export" class="org-primary">↥&nbsp; 导出</button></div>
+    <div class="student-table-scroll"><table class="student-table"><colgroup><col style="width:48px"><col style="width:125px"><col style="width:185px"><col><col><col style="width:150px"><col style="width:180px"></colgroup><thead><tr><th>序号</th><th>学生姓名</th><th>身份证号码</th><th>所属年级</th><th>所属班级</th><th>家长手机</th><th>报名时间</th></tr></thead><tbody id="org-student-rows"></tbody></table></div>
+    <footer class="org-pagination student-pagination"><span>共 1 条数据</span><button aria-current="page">1</button><select aria-label="学生每页条数"><option>10 条/页</option><option>20 条/页</option></select></footer>
+  </div>
+</dialog>
+<dialog id="school-plan-dialog" class="school-plan-dialog"><h2 id="school-plan-title">方案详情</h2><div id="school-plan-info"></div><form method="dialog"><button class="confirm">关闭</button></form></dialog>
+<dialog id="school-create-dialog" class="school-plan-dialog"><form id="school-create-form"><h2>创建选课方案</h2><label>方案名称<input name="name" required placeholder="请输入方案名称" maxlength="60"></label><div class="actions"><button type="button" id="school-create-cancel">取消</button><button class="confirm" type="submit">创建</button></div></form></dialog>
+<script src="school-results.js?v=9"></script>
+<script src="school.js?v=8"></script>
+<script src="overview.js?v=12"></script>
+<script src="app.js?v=10"></script>
+</body>
+</html>
