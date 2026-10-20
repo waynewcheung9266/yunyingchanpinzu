@@ -7,6 +7,7 @@
 - `projects/kingkong-area-config/`：运营后台小程序管理金刚区配置
 - `projects/chuangjian-laodongke-delete/`：学校端天津津南区创建劳动课新增删除功能
 - `projects/school-self-check-upload-attachment/`：学校端天津津南区校自查考核表单新增上传附件功能
+- `projects/education-bureau-dashboard/`：市级教育局劳动课数据看板
 
 本地预览方式：
 
@@ -20,4 +21,5 @@ python3 -m http.server 4175
 http://127.0.0.1:4175/projects/kingkong-area-config/
 http://127.0.0.1:4175/projects/chuangjian-laodongke-delete/
 http://127.0.0.1:4175/projects/school-self-check-upload-attachment/
+http://127.0.0.1:4175/projects/education-bureau-dashboard/
 ```

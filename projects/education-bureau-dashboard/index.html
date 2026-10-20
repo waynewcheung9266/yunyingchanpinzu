@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>市级教育局数据看板</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true"></div>
+          <strong>张伟的教育局</strong>
+        </div>
+        <button class="org-switch" type="button">区/县级教育局 <span></span></button>
+        <nav class="topnav" aria-label="主导航">
+          <a href="#">研学</a>
+          <a href="#">课后服务</a>
+          <a class="active" href="#">劳动课</a>
+        </nav>
+        <button class="fullscreen" type="button" aria-label="全屏"><span></span></button>
+        <button class="avatar" type="button" aria-label="张伟">张</button>
+      </header>
+
+      <div class="shell">
+        <aside class="sidebar" aria-label="侧边菜单">
+          <nav class="side-menu">
+            <a class="menu-item" href="#"><span class="icon monitor"></span><span>数据大屏</span></a>
+            <a class="menu-item active" href="#"><span class="icon home"></span><span>数据看板</span></a>
+            <a class="menu-item has-more" href="#"><span class="icon image"></span><span>劳动周</span><b>⌄</b></a>
+            <a class="menu-item has-more" href="#"><span class="icon book"></span><span>课程管理</span><b>⌄</b></a>
+            <a class="menu-item has-more" href="#"><span class="icon doc"></span><span>劳动清单</span></a>
+            <a class="menu-item has-more" href="#"><span class="icon flag"></span><span>活动管理</span><b>⌄</b></a>
+            <a class="menu-item" href="#"><span class="icon school"></span><span>学校管理</span></a>
+            <a class="menu-item" href="#"><span class="icon crown"></span><span>优秀教师</span></a>
+            <a class="menu-item has-more" href="#"><span class="icon gallery"></span><span>作品管理</span><b>⌄</b></a>
+            <a class="menu-item has-more" href="#"><span class="icon report"></span><span>报表管理</span><b>⌄</b></a>
+            <a class="menu-item" href="#"><span class="icon archive"></span><span>优秀示范校</span></a>
+            <a class="menu-item" href="#"><span class="icon barcode"></span><span>学生档案</span></a>
+            <a class="menu-item" href="#"><span class="icon judge"></span><span>劳动课考评管理</span></a>
+            <a class="menu-item has-more" href="#"><span class="icon check"></span><span>校自查管理</span><b>⌄</b></a>
+            <a class="menu-item has-more" href="#"><span class="icon assess"></span><span>校考核管理</span><b>⌄</b></a>
+            <a class="menu-item has-more" href="#"><span class="icon globe"></span><span>官网管理</span><b>⌄</b></a>
+            <a class="menu-item has-more" href="#"><span class="icon gear"></span><span>系统设置</span><b>⌄</b></a>
+          </nav>
+          <button class="sidebar-collapse" type="button" aria-label="收起侧边栏">≪</button>
+        </aside>
+
+        <main class="main">
+          <div class="breadcrumb">
+            <span class="crumb-home"></span>
+            <span>/</span>
+            <strong>数据看板</strong>
+          </div>
+
+          <section class="filter-panel">
+            <label class="filter-field">
+              <span>学校</span>
+              <div class="search-select has-value" id="schoolSearchSelect">
+                <input id="schoolFilter" type="text" value="全部" autocomplete="off" aria-label="学校" />
+                <button class="search-clear" id="clearSchoolFilter" type="button" aria-label="展开学校选项">×</button>
+                <div class="search-options" id="schoolOptions" role="listbox"></div>
+              </div>
+            </label>
+            <label class="filter-field">
+              <span>学年</span>
+              <select id="schoolYear">
+                <option>2026~2027</option>
+                <option>2025~2026</option>
+                <option>2024~2025</option>
+              </select>
+            </label>
+            <label class="filter-field">
+              <span>学期</span>
+              <select id="semester">
+                <option>上学期</option>
+                <option>下学期</option>
+              </select>
+            </label>
+            <div class="filter-divider"></div>
+            <button class="reset-btn" id="resetFilters" type="button"><span>↻</span>重置</button>
+            <button class="query-btn" id="queryData" type="button"><span></span>查询</button>
+          </section>
+
+          <section class="overview-panel">
+            <article class="bureau-card">
+              <div class="split-stats bureau-stats">
+                <div><strong>0</strong><span>学校数</span></div>
+                <div><strong>0</strong><span>教师数</span></div>
+              </div>
+            </article>
+
+            <div class="metric-grid">
+              <article class="metric-card primary">
+                <h2>学生数</h2>
+                <div class="split-stats">
+                  <div><strong>6</strong><span>学生数据</span></div>
+                  <div><strong>6</strong><span>已绑定数</span></div>
+                </div>
+              </article>
+              <article class="metric-card green-card">
+                <h2>校开课</h2>
+                <div class="split-stats triple">
+                  <div><strong>1</strong><span>已开课</span></div>
+                  <div><strong>3</strong><span>未开课</span></div>
+                  <div><strong>25%</strong><span>开课率</span></div>
+                </div>
+              </article>
+              <article class="metric-card purple-card">
+                <h2>校家庭课</h2>
+                <div class="split-stats triple">
+                  <div><strong>1</strong><span>已发布</span></div>
+                  <div><strong>3</strong><span>未发布</span></div>
+                  <div><strong>25%</strong><span>发布率</span></div>
+                </div>
+              </article>
+              <article class="metric-card orange-card">
+                <h2>研学活动开展</h2>
+                <div class="split-stats">
+                  <div><strong>1</strong><span>已开展</span></div>
+                  <div><strong>3</strong><span>未开展</span></div>
+                </div>
+              </article>
+              <article class="metric-card primary labor-week-card">
+                <h2>劳动周</h2>
+                <div class="split-stats triple">
+                  <div><strong>1</strong><span>开展学校数</span></div>
+                  <div><strong>3</strong><span>未开展学校数</span></div>
+                  <div><strong>25%</strong><span>开展占比</span></div>
+                </div>
+              </article>
+
+              <article class="summary-card">
+                <div>
+                  <h2>作业数</h2>
+                  <strong>15 <em>100%</em></strong>
+                  <span>作业提交数　　作业提交率</span>
+                </div>
+                <div class="donut cyan" style="--p: 82"></div>
+              </article>
+              <article class="summary-card warm">
+                <div>
+                  <h2>课程评价</h2>
+                  <strong>27 <em>0</em><em>100%</em></strong>
+                  <span>已评价数　　未评价数　　评价率</span>
+                </div>
+                <div class="donut blue" style="--p: 76"></div>
+              </article>
+              <article class="summary-card">
+                <div>
+                  <h2>期末综评</h2>
+                  <strong>3 <em>3</em></strong>
+                  <span>已评价数　　未评价数</span>
+                </div>
+                <div class="donut blue" style="--p: 50"></div>
+              </article>
+              <article class="summary-card">
+                <div>
+                  <h2>课程类型</h2>
+                  <strong>2 <em class="dark">2</em></strong>
+                  <span>必修课　　　特色课</span>
+                </div>
+                <div class="donut blue" style="--p: 50"></div>
+              </article>
+            </div>
+          </section>
+
+          <section class="middle-grid">
+            <article class="chart-card task-distribution">
+              <h2>劳动任务群分布</h2>
+              <svg class="task-distribution-chart" viewBox="0 0 360 220" role="img" aria-label="劳动任务群百分比分布"><circle cx="180" cy="110" r="67" fill="none" stroke="#209bf4" stroke-width="26" stroke-dasharray="75.77521480458581 420.97341558103227" stroke-dashoffset="0" transform="rotate(-90 180 110)"/><polyline points="223.4019703932987,41.609438034336776 233.58267949789965,24.722879524296474 300,24.722879524296474" fill="none" stroke="#209bf4"/><text x="305" y="28.722879524296474" text-anchor="start" font-size="12" fill="#4b5563">18%</text><circle cx="180" cy="110" r="67" fill="none" stroke="#5ed4d2" stroke-width="26" stroke-dasharray="63.14601233715484 420.97341558103227" stroke-dashoffset="-75.77521480458581" transform="rotate(-90 180 110)"/><polyline points="260.96003138962425,112.5442714853284 279.95065603657315,113.17248666689096 300,113.17248666689096" fill="none" stroke="#5ed4d2"/><text x="305" y="117.17248666689096" text-anchor="start" font-size="12" fill="#4b5563">15%</text><circle cx="180" cy="110" r="67" fill="none" stroke="#5874ed" stroke-width="26" stroke-dasharray="50.51680986972387 420.97341558103227" stroke-dashoffset="-138.92122714174064" transform="rotate(-90 180 110)"/><polyline points="231.63134316964388,172.41157266483893 243.742398974869,187.8218375203547 300,187.8218375203547" fill="none" stroke="#5874ed"/><text x="305" y="191.8218375203547" text-anchor="start" font-size="12" fill="#4b5563">12%</text><circle cx="180" cy="110" r="67" fill="none" stroke="#f5ba42" stroke-width="26" stroke-dasharray="33.677873246482584 420.97341558103227" stroke-dashoffset="-189.4380370114645" transform="rotate(-90 180 110)"/><polyline points="185.0860320818744,190.84016500269001 186.27905195293135,210.80069957125542 300,210.80069957125542" fill="none" stroke="#f5ba42"/><text x="305" y="214.80069957125542" text-anchor="start" font-size="12" fill="#4b5563">8%</text><circle cx="180" cy="110" r="67" fill="none" stroke="#54ba77" stroke-width="26" stroke-dasharray="42.097341558103224 420.97341558103227" stroke-dashoffset="-223.11591025794712" transform="rotate(-90 180 110)"/><polyline points="140.97795239776104,180.98084108355295 131.82463258982847,198.5069746844302 60,198.5069746844302" fill="none" stroke="#54ba77"/><text x="55" y="202.5069746844302" text-anchor="end" font-size="12" fill="#4b5563">10%</text><circle cx="180" cy="110" r="67" fill="none" stroke="#ed8d65" stroke-width="26" stroke-dasharray="37.88760740229291 420.97341558103227" stroke-dashoffset="-265.21325181605033" transform="rotate(-90 180 110)"/><polyline points="107.82847154074221,146.7732304789033 90.89934758116323,155.85304047369425 60,155.85304047369425" fill="none" stroke="#ed8d65"/><text x="55" y="159.85304047369425" text-anchor="end" font-size="12" fill="#4b5563">9%</text><circle cx="180" cy="110" r="67" fill="none" stroke="#a581d7" stroke-width="26" stroke-dasharray="25.258404934861936 420.97341558103227" stroke-dashoffset="-303.10085921834326" transform="rotate(-90 180 110)"/><polyline points="99,110.00000000000001 80,110.00000000000001 60,110.00000000000001" fill="none" stroke="#a581d7"/><text x="55" y="114.00000000000001" text-anchor="end" font-size="12" fill="#4b5563">6%</text><circle cx="180" cy="110" r="67" fill="none" stroke="#46b8ca" stroke-width="26" stroke-dasharray="29.468139090672256 420.97341558103227" stroke-dashoffset="-328.3592641532052" transform="rotate(-90 180 110)"/><polyline points="105.66187531959751,77.83102085858282 88.22453743160186,69.88806304588722 60,69.88806304588722" fill="none" stroke="#46b8ca"/><text x="55" y="73.88806304588722" text-anchor="end" font-size="12" fill="#4b5563">7%</text><circle cx="180" cy="110" r="67" fill="none" stroke="#e57da5" stroke-width="26" stroke-dasharray="29.468139090672256 420.97341558103227" stroke-dashoffset="-357.8274032438774" transform="rotate(-90 180 110)"/><polyline points="126.43373890878422,49.241003359932755 113.86881346763484,34.23878196732356 60,34.23878196732356" fill="none" stroke="#e57da5"/><text x="55" y="38.23878196732356" text-anchor="end" font-size="12" fill="#4b5563">7%</text><circle cx="180" cy="110" r="67" fill="none" stroke="#91ad52" stroke-width="26" stroke-dasharray="33.677873246482584 420.97341558103227" stroke-dashoffset="-387.2955423345497" transform="rotate(-90 180 110)"/><polyline points="159.85611913964672,31.544763948580893 155.13101128351448,12.173100726008272 60,12.173100726008272" fill="none" stroke="#91ad52"/><text x="55" y="16.173100726008272" text-anchor="end" font-size="12" fill="#4b5563">8%</text></svg>
+              <ul class="task-legend">
+                <li style="--task-color:#209bf4"><i></i><span>清洁与卫生</span><b>18%</b></li>
+                <li style="--task-color:#5ed4d2"><i></i><span>整理与收纳</span><b>15%</b></li>
+                <li style="--task-color:#5874ed"><i></i><span>烹饪与营养</span><b>12%</b></li>
+                <li style="--task-color:#f5ba42"><i></i><span>家庭机具使用与维护</span><b>8%</b></li>
+                <li style="--task-color:#54ba77"><i></i><span>农业生产劳动</span><b>10%</b></li>
+                <li style="--task-color:#ed8d65"><i></i><span>传统工艺制作</span><b>9%</b></li>
+                <li style="--task-color:#a581d7"><i></i><span>工业生产劳动</span><b>6%</b></li>
+                <li style="--task-color:#46b8ca"><i></i><span>新技术体验与应用</span><b>7%</b></li>
+                <li style="--task-color:#e57da5"><i></i><span>现代服务业劳动</span><b>7%</b></li>
+                <li style="--task-color:#91ad52"><i></i><span>公益劳动与志愿服务</span><b>8%</b></li>
+              </ul>
+            </article>
+            <article class="chart-card radar-card">
+              <svg class="radar-chart" viewBox="0 0 360 280" role="img" aria-label="劳动观念、劳动精神、劳动习惯和品质、劳动能力雷达图">
+                <g transform="translate(180 142)">
+                  <polygon class="radar-ring" points="0,-110 110,0 0,110 -110,0" />
+                  <polygon class="radar-ring" points="0,-85 85,0 0,85 -85,0" />
+                  <polygon class="radar-ring" points="0,-60 60,0 0,60 -60,0" />
+                  <polygon class="radar-ring" points="0,-35 35,0 0,35 -35,0" />
+                  <line class="radar-axis" x1="0" y1="-110" x2="0" y2="110" />
+                  <line class="radar-axis" x1="-110" y1="0" x2="110" y2="0" />
+                  <polygon class="radar-area" points="0,-67 68,0 0,70 -66,0" />
+                  <circle class="radar-dot" cx="0" cy="-67" r="5" />
+                  <circle class="radar-dot" cx="68" cy="0" r="5" />
+                  <circle class="radar-dot" cx="0" cy="70" r="5" />
+                  <circle class="radar-dot" cx="-66" cy="0" r="5" />
+                </g>
+                <text x="180" y="20" text-anchor="middle">劳动观念</text>
+                <text x="315" y="148" text-anchor="middle">劳动精神</text>
+                <text x="180" y="272" text-anchor="middle">劳动习惯和品质</text>
+                <text x="45" y="148" text-anchor="middle">劳动能力</text>
+              </svg>
+            </article>
+
+            <article class="rating-board">
+              <div class="rating-card green">
+                <header><h2>教师评价</h2><strong>27 <span>次</span></strong></header>
+                <div class="rating-box">
+                  <div class="rating-row"><b>优秀</b><span><i style="--w:66%"></i></span><em>18</em></div>
+                  <div class="rating-row"><b>良好</b><span><i style="--w:8%"></i></span><em>2</em></div>
+                  <div class="rating-row"><b>合格</b><span><i style="--w:26%"></i></span><em>7</em></div>
+                  <div class="rating-row"><b>不合格</b><span><i style="--w:0%"></i></span><em>0</em></div>
+                </div>
+              </div>
+              <div class="rating-card blue">
+                <header><h2>家长评价</h2><strong>0 <span>次</span></strong></header>
+                <div class="rating-box">
+                  <div class="rating-row"><b>优秀</b><span><i style="--w:0%"></i></span><em>0</em></div>
+                  <div class="rating-row"><b>良好</b><span><i style="--w:0%"></i></span><em>0</em></div>
+                  <div class="rating-row"><b>合格</b><span><i style="--w:0%"></i></span><em>0</em></div>
+                  <div class="rating-row"><b>不合格</b><span><i style="--w:0%"></i></span><em>0</em></div>
+                </div>
+              </div>
+              <div class="rating-card pink">
+                <header><h2>社会评价</h2><strong>5 <span>次</span></strong></header>
+                <div class="rating-box">
+                  <div class="rating-row"><b>优秀</b><span><i style="--w:14%"></i></span><em>5</em></div>
+                  <div class="rating-row"><b>良好</b><span><i style="--w:0%"></i></span><em>0</em></div>
+                  <div class="rating-row"><b>合格</b><span><i style="--w:0%"></i></span><em>0</em></div>
+                  <div class="rating-row"><b>不合格</b><span><i style="--w:0%"></i></span><em>0</em></div>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <section class="analysis-card">
+            <h2>期末综评分析</h2>
+            <div class="analysis-grid">
+              <div class="pie-wrap">
+                <div class="pie-chart" aria-label="期末综评占比"></div>
+                <span class="pie-label fail">不合格</span>
+                <span class="pie-label pass">合格</span>
+                <span class="pie-label good">良好</span>
+                <span class="pie-label excellent">优秀</span>
+                <div class="chart-legend pie-legend">
+                  <span><i class="excellent"></i>优秀</span>
+                  <span><i class="good"></i>良好</span>
+                  <span><i class="pass"></i>合格</span>
+                  <span><i class="fail"></i>不合格</span>
+                </div>
+              </div>
+              <div class="line-wrap">
+                <svg class="line-chart" viewBox="0 0 720 255" role="img" aria-label="期末综评趋势">
+                  <line x1="42" y1="30" x2="690" y2="30" />
+                  <line x1="42" y1="105" x2="690" y2="105" />
+                  <line x1="42" y1="180" x2="690" y2="180" />
+                  <text x="30" y="34">2</text>
+                  <text x="30" y="109">1</text>
+                  <text x="30" y="184">0</text>
+                  <text class="axis-label" x="42" y="205">一年级</text>
+                  <text class="axis-label" x="122" y="205">二年级</text>
+                  <text class="axis-label" x="205" y="205">三年级</text>
+                  <text class="axis-label" x="285" y="205">四年级</text>
+                  <text class="axis-label" x="365" y="205">五年级</text>
+                  <text class="axis-label" x="445" y="205">六年级</text>
+                  <text class="axis-label" x="535" y="205">初一</text>
+                  <text class="axis-label" x="620" y="205">初二</text>
+                  <text class="axis-label" x="676" y="205">初三</text>
+                  <path class="series-fill excellent" d="M42 30 C75 190, 115 3, 145 44 S215 210, 250 108 S320 31, 360 75 S430 145, 474 122 S570 58, 690 88 L690 180 L42 180 Z" />
+                  <path class="series excellent" d="M42 30 C75 190, 115 3, 145 44 S215 210, 250 108 S320 31, 360 75 S430 145, 474 122 S570 58, 690 88" />
+                  <path class="series good" d="M42 105 C92 105, 120 105, 145 105 S205 106, 242 106 S277 180, 323 180 S500 180, 690 180" />
+                  <path class="series pass" d="M42 180 C110 180, 152 180, 205 180 S520 180, 690 180" />
+                  <path class="series fail" d="M42 180 C110 180, 152 180, 205 180 S520 180, 690 180" />
+                </svg>
+                <div class="chart-legend line-legend">
+                  <span><i class="excellent hollow"></i>优秀</span>
+                  <span><i class="good hollow"></i>良好</span>
+                  <span><i class="pass hollow"></i>合格</span>
+                  <span><i class="fail hollow"></i>不合格</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="ranking-grid" aria-label="各校排行榜">
+            <article class="rank-card">
+              <h2>各校作业数排名</h2>
+              <div class="rank-head"><span>学校名称</span><span>作业数(份)</span></div>
+              <div class="rank-row">
+                <div class="rank-title"><span class="rank-medal gold">♕<em>TOP1</em></span><strong>张伟的学校</strong></div>
+                <b>15</b>
+              </div>
+              <div class="rank-row">
+                <div class="rank-title"><span class="rank-medal silver">♕<em>TOP2</em></span><strong>张伟的学校2</strong></div>
+                <b>0</b>
+              </div>
+              <div class="rank-row">
+                <div class="rank-title"><span class="rank-medal bronze">♕<em>TOP3</em></span><strong>张伟的学校3</strong></div>
+                <b>0</b>
+              </div>
+              <div class="rank-row">
+                <div class="rank-title"><span class="rank-index">04</span><strong>张伟的学校4</strong></div>
+                <b class="muted">0</b>
+              </div>
+            </article>
+
+            <article class="rank-card">
+              <h2>各校优秀学生数排名</h2>
+              <div class="rank-head"><span>学校名称</span><span>优秀学生数</span></div>
+              <div class="rank-row">
+                <div class="rank-title"><span class="rank-medal gold">♕<em>TOP1</em></span><strong>张伟的学校</strong></div>
+                <b>18</b>
+              </div>
+              <div class="rank-row">
+                <div class="rank-title"><span class="rank-medal silver">♕<em>TOP2</em></span><strong>张伟的学校2</strong></div>
+                <b>0</b>
+              </div>
+              <div class="rank-row">
+                <div class="rank-title"><span class="rank-medal bronze">♕<em>TOP3</em></span><strong>张伟的学校3</strong></div>
+                <b>0</b>
+              </div>
+              <div class="rank-row">
+                <div class="rank-title"><span class="rank-index">04</span><strong>张伟的学校4</strong></div>
+                <b class="muted">0</b>
+              </div>
+            </article>
+
+            <article class="rank-card">
+              <h2>各校教师评价数排名</h2>
+              <div class="rank-head"><span>学校名称</span><span>评价数(次)</span></div>
+              <div class="rank-row">
+                <div class="rank-title"><span class="rank-medal gold">♕<em>TOP1</em></span><strong>张伟的学校</strong></div>
+                <b>27</b>
+              </div>
+              <div class="rank-row">
+                <div class="rank-title"><span class="rank-medal silver">♕<em>TOP2</em></span><strong>张伟的学校2</strong></div>
+                <b>0</b>
+              </div>
+              <div class="rank-row">
+                <div class="rank-title"><span class="rank-medal bronze">♕<em>TOP3</em></span><strong>张伟的学校3</strong></div>
+                <b>0</b>
+              </div>
+              <div class="rank-row">
+                <div class="rank-title"><span class="rank-index">04</span><strong>张伟的学校4</strong></div>
+                <b class="muted">0</b>
+              </div>
+            </article>
+          </section>
+        </main>
+      </div>
+    </div>
+    <div class="toast" id="toast">已按当前条件刷新数据</div>
+    <script src="./script.js"></script>
+  </body>
+</html>
