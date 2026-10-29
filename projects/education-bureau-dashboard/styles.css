@@ -807,17 +807,29 @@ button {
 .task-legend { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 12px; }
 .task-legend li { grid-template-columns: 9px minmax(0, 1fr); line-height: 18px; }
 .task-distribution-chart { display: block; width: 100%; height: 220px; margin-bottom: 12px; }
-.overview-panel { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-.overview-panel .bureau-card { grid-column: 1; grid-row: 2; height: 132px; padding: 10px 16px; }
-.overview-panel .bureau-stats { height: 100%; }
+.overview-panel { grid-template-columns: minmax(165px, .85fr) repeat(4, minmax(0, 1fr)); grid-template-rows: repeat(2, 116px); gap: 18px; padding: 18px; }
+.overview-panel .bureau-card { grid-column: 1; grid-row: 1 / 3; height: auto; padding: 24px 14px; background: linear-gradient(150deg, #2372ff, #54adff); }
+.overview-panel .bureau-stats { height: 100%; grid-template-rows: repeat(2, 1fr); row-gap: 12px; }
+.overview-panel .bureau-stats > div:nth-child(n+3) { border-top: 1px solid #ffffff40; padding-top: 20px; }
 .overview-panel .bureau-row { grid-template-columns: 16px 1fr 30px; }
 .overview-panel .bureau-row + .bureau-row { margin-top: 10px; }
 .overview-panel .bureau-row strong { grid-column: 3; margin-top: 0; font-size: 23px; line-height: 30px; text-align: right; }
 .overview-panel .city-illustration { opacity: .3; pointer-events: none; }
 .overview-panel .metric-grid { display: contents; }
-.overview-panel .metric-card { grid-row: 1; }
-.overview-panel .labor-week-card { grid-column: 5; grid-row: 1; }
-.overview-panel .summary-card { min-width: 0; }
+.overview-panel .metric-card { grid-row: 1; padding: 14px 12px; border: 1px solid #edf1f7; }
+.overview-panel .green-card { grid-column: 3; background: #e9fbf5; color: #00aa99; }
+.overview-panel .purple-card { grid-column: 4; background: #fffaf0; color: #b6850c; }
+.overview-panel .orange-card { grid-column: 5; background: #fff7f1; color: #e77227; }
+.overview-panel .labor-week-card { grid-column: 2; grid-row: 1; background: #eaf4ff; color: #1682ec; }
+.overview-panel .metric-card h2 { font-size: 13px; }
+.overview-panel .split-stats strong { font-size: 23px; }
+.overview-panel .split-stats span { font-weight: 400; }
+.overview-panel .summary-card { min-width: 0; grid-row: 2; display: block; padding: 14px 12px; background: #f4f5fa; }
+.overview-panel .summary-card h2 { font-size: 13px; font-weight: 500; }
+.overview-panel .summary-card strong { justify-content: space-around; gap: 6px; margin-top: 20px; font-size: 22px; }
+.overview-panel .summary-card em { color: inherit; }
+.overview-panel .summary-card span { font-size: 11px; margin-top: 5px; white-space: normal; }
+.overview-panel .summary-card .donut { display: none; }
 
 .middle-grid .radar-chart { width: 100%; max-width: 340px; height: auto; }
 .middle-grid .rating-board { min-width: 0; padding: 20px 12px; gap: 10px; }
