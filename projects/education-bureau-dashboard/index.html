@@ -26,7 +26,7 @@
       <div class="shell">
         <aside class="sidebar" aria-label="侧边菜单">
           <nav class="side-menu">
-            <a class="menu-item" href="#"><span class="icon monitor"></span><span>数据大屏</span></a>
+            <a class="menu-item" id="openDataScreen" href="#"><span class="icon monitor"></span><span>数据大屏</span></a>
             <a class="menu-item active" href="#"><span class="icon home"></span><span>数据看板</span></a>
             <a class="menu-item has-more" href="#"><span class="icon image"></span><span>劳动周</span><b>⌄</b></a>
             <a class="menu-item has-more" href="#"><span class="icon book"></span><span>课程管理</span><b>⌄</b></a>
@@ -347,7 +347,38 @@
         </main>
       </div>
     </div>
+    <button class="rules-entry" id="openRules" type="button" aria-haspopup="dialog" aria-controls="rulesDrawer"><span aria-hidden="true">ⓘ</span>统计规则</button>
+    <dialog class="rules-drawer" id="rulesDrawer" aria-labelledby="rulesTitle">
+      <header class="rules-header"><div><h2 id="rulesTitle">统计规则</h2><p>指标算法与统计口径</p></div><button id="closeRules" type="button" aria-label="关闭统计规则" title="关闭">×</button></header>
+      <div class="rules-content">
+        <section><h3>1、作业提交率</h3>
+          <div class="rule-formula">单校作业提交率 =（必修总实际提交 + 特色校本总实际提交 + 家庭劳动课全部任务总实际提交）÷（必修总应提交 + 校本总应提交 + 家庭劳动课全部任务总应交）× 100%</div>
+          <h4>必修课</h4><p>总实际提交 = 每门必修课的课程实际提交作业数的总和</p><p>总应提交 = 每门课程的开班学生数 × 该课程数的总和</p>
+          <h4>特色校本课</h4><p>总实际提交 = 每门特色校本课实际提交作业数的总和</p><p>总应提交 = 每门课程的开班学生数 × 该课程数的总和</p>
+          <h4>家庭劳动课</h4><p>总实际提交 = 所有任务实际提交作业数的总和</p><p>总应提交 = 每个任务所属任务项的开课学生数 × 该任务要求打卡次数的总和</p>
+        </section>
+        <section><h3>2、课程评价率</h3><div class="rule-formula">课程评价率 = 已评价数 ÷（已评价数 + 未评价数）× 100%</div></section>
+        <section><h3>3、校开课率</h3><div class="rule-formula">开课率 = 已开课数量 ÷（已开课数量 + 未开课数量）× 100%</div></section>
+        <section><h3>4、家庭劳动课完成率（校家庭课）</h3><div class="rule-formula">发布率 = 已发布数量 ÷（已发布数量 + 未发布数量）× 100%</div></section>
+        <section><h3>5、劳动任务群的投入分布情况</h3>
+          <h4>10 种劳动任务群</h4><p>清洁与卫生、整理与收纳、烹饪与营养、家庭机具使用与维护、农业生产劳动、传统工艺制作、工业生产劳动、新技术体验与应用、现代服务业劳动、公益劳动与志愿服务</p>
+          <h4>3 种课程类型</h4><p><strong>家庭劳动课类型：</strong>统计学校端家庭劳动里创建数量、统计运营后台家庭劳动创建后授权给学校的数量。</p><p><strong>特色校本课类型：</strong>统计学校端课程资源里创建数量。</p><p><strong>必修课类型：</strong>统计运营后台创建课程——创建课程包后授权给学校的，创建课程任务群没有填写的统计为 0。</p>
+          <h4>算法</h4><div class="rule-formula">单个任务占比 =（该任务家庭劳动创建数量 + 该任务在特色校本课创建数量 + 该任务在必修课创建授权给学校后的数量）÷ 全部 10 个任务总数量 × 100%</div>
+          <h4>举例</h4>
+          <ol><li>清洁与卫生：家庭劳动 = 20，特色校本 = 10，必修课 = 10；任务总数 = 20 + 10 + 10 = 40。</li><li>整理与收纳：家庭劳动 = 15，特色校本 = 8，必修课 = 7；任务总数 = 15 + 8 + 7 = 30。</li><li>烹饪与营养：家庭劳动 = 10，特色校本 = 12，必修课 = 8；任务总数 = 10 + 12 + 8 = 30。</li></ol>
+          <p>剩下 7 个任务假设算出来合计依次：22、18、20、15、25、15、20。</p>
+          <div class="rule-formula">全部 10 个任务总数量 = 40 + 30 + 30 + 22 + 18 + 20 + 15 + 25 + 15 + 20 = 235</div>
+          <ul><li>清洁与卫生占比 = 40 ÷ 235 × 100% ≈ 17.02%</li><li>整理与收纳占比 = 30 ÷ 235 × 100% ≈ 12.77%</li><li>烹饪与营养占比 = 30 ÷ 235 × 100% ≈ 12.77%</li><li>剩下 7 个算法相同，以此算出 10 个任务的占比百分比。</li></ul>
+        </section>
+      </div>
+    </dialog>
     <div class="toast" id="toast">已按当前条件刷新数据</div>
+    <dialog class="data-screen" id="dataScreen" aria-label="劳动教育数据驾驶舱">
+      <img src="./data-screen.png" alt="劳动教育数据驾驶舱：学生绑定情况、课程资源、学生评价表现、学校开课占比、学校教学开展排名和各学段作业提交情况" />
+      <svg id="screenCharts" class="screen-charts" viewBox="0 0 2048 1228" aria-label="数据大屏交互图表"></svg>
+      <div id="screenTooltip" class="screen-tooltip" hidden></div>
+      <button class="data-screen-close" id="closeDataScreen" type="button" aria-label="关闭数据大屏" title="关闭数据大屏">×</button>
+    </dialog>
     <script src="./script.js"></script>
   </body>
 </html>
