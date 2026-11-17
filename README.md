@@ -23,3 +23,5 @@ http://127.0.0.1:4175/projects/chuangjian-laodongke-delete/
 http://127.0.0.1:4175/projects/school-self-check-upload-attachment/
 http://127.0.0.1:4175/projects/education-bureau-dashboard/
 ```
+
+- `projects/custody-activity-evaluation/`：驻马店教育局端托管活动评价明细页面结构
