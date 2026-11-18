@@ -15,3 +15,5 @@
 公网预览：https://waynewcheung9266.github.io/yunyingchanpinzu/projects/custody-activity-evaluation/
 
 区县教育局列位于班级后，缺失或空白时显示“- -”，导出保持相同规则。
+
+活动列表不创建导出按钮；评价详情弹窗在活动名称下一行展示对应的服务组织（机构或基地）。
