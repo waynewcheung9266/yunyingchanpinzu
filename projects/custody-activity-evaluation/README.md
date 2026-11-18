@@ -16,3 +16,5 @@
 本地预览：在仓库根目录执行 `python3 -m http.server 4178 --bind 127.0.0.1`，访问 `/projects/custody-activity-evaluation/`。
 
 公网预览：https://waynewcheung9266.github.io/yunyingchanpinzu/projects/custody-activity-evaluation/
+
+学校页标题为“学校列表”，学校模糊搜索位于列表表头最右侧，输入或清空即时筛选。按最新展示要求，刘同学单独使用星评作为对比示例，弹窗中所有指标都显示“星评”和五星，无分数；其他学生沿用活动设定。
