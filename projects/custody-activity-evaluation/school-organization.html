@@ -36,7 +36,7 @@ document.querySelectorAll('[data-report]').forEach(el=>el.onclick=()=>location.h
 const activities=[
 {id:1,creator:'机构端',evaluationMode:'score',serviceOrganization:'启航研学机构',name:'秋季托管劳动实践活动',date:'2026-11-12',schools:[{name:'驻马店市实验小学',evaluated:128,unevaluated:12},{name:'驻马店市第二小学',evaluated:96,unevaluated:8},{name:'驻马店市第三小学',evaluated:108,unevaluated:10}]},
 {id:2,creator:'基地端',evaluationMode:'star',serviceOrganization:'青少年素质教育基地',name:'课后托管趣味运动会',date:'2026-11-10',schools:[{name:'驻马店市实验小学',evaluated:86,unevaluated:6},{name:'驻马店市第二小学',evaluated:102,unevaluated:12}]},
-{id:3,creator:'运营端',evaluationMode:'score',serviceOrganization:'知行教育机构',name:'托管阅读分享活动',date:'2026-11-06',schools:[{name:'驻马店市第三小学',evaluated:75,unevaluated:5}]},
+{id:3,creator:'运营端',evaluationMode:'star',serviceOrganization:'知行教育机构',name:'托管阅读分享活动',date:'2026-11-06',schools:[{name:'驻马店市第三小学',evaluated:75,unevaluated:5}]},
 {id:4,creator:'基地端',evaluationMode:'star',serviceOrganization:'劳动实践基地',name:'校园手工创作活动',date:'2026-10-28',schools:[{name:'驻马店市实验小学',evaluated:90,unevaluated:10},{name:'驻马店市第三小学',evaluated:82,unevaluated:8}]}];
 const escapeHtml=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const tree=(score)=>[
