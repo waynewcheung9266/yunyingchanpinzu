@@ -45,7 +45,7 @@ const school='';const activity=document.querySelector('#activity-name').value.tr
 document.querySelector('#activity-end').classList.toggle('invalid',Boolean(start&&end&&start>end));
 if(start&&end&&start>end){toast('结束时间不能早于开始时间');return}
 activityRows=filterActivities(school,activity,start,end,document.querySelector('#activity-creator').value);
-document.querySelector('#table').innerHTML='<table class="structure-table"><thead><tr><th>活动名称</th><th>活动创建方</th><th>服务组织</th><th>参与学校数量</th><th>已评学生数</th><th>未评学生数</th><th>操作</th></tr></thead><tbody>'+(activityRows.length?activityRows.map(a=>`<tr><td>${escapeHtml(a.name)}</td><td>${escapeHtml(a.creator)}</td><td>${escapeHtml(a.serviceOrganization)}</td><td>${a.schoolCount}</td><td>${a.evaluated}</td><td>${a.unevaluated}</td><td><button class="link-btn" data-detail="${a.id}">查看详情</button></td></tr>`).join(''):'<tr><td colspan="7" class="empty-cell">暂无符合筛选条件的数据</td></tr>')+'</tbody></table>';
+document.querySelector('#table').innerHTML='<table class="structure-table"><thead><tr><th>活动名称</th><th>活动创建方</th><th>服务组织</th><th>参与学校数量</th><th>已提交评价</th><th>待提交评价</th><th>操作</th></tr></thead><tbody>'+(activityRows.length?activityRows.map(a=>`<tr><td>${escapeHtml(a.name)}</td><td>${escapeHtml(a.creator)}</td><td>${escapeHtml(a.serviceOrganization)}</td><td>${a.schoolCount}</td><td>${a.evaluated}</td><td>${a.unevaluated}</td><td><button class="link-btn" data-detail="${a.id}">查看详情</button></td></tr>`).join(''):'<tr><td colspan="7" class="empty-cell">暂无符合筛选条件的数据</td></tr>')+'</tbody></table>';
 document.querySelector('#total').textContent='共 '+activityRows.length+' 条数据';
 }
 function render(name){
